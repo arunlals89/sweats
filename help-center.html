@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Sweats</title>
+    <meta name="description" content="Find answers to common questions and get help with using the Sweats app.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .search-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .categories-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .category-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .article-count {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .popular-articles {
+            margin-bottom: 4rem;
+        }
+
+        .articles-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .article-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .article-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .article-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .contact-support {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .contact-support h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-support p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .support-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .support-button {
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--primary-bg);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .support-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
+        }
+
+        .support-button.secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 2px solid var(--accent-green);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .articles-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .support-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="landing.html" class="back-link">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Home
+        </a>
+        
+        <div class="header">
+            <h1>Help Center</h1>
+            <p>Find answers to common questions and get help with using Sweats.</p>
+        </div>
+        
+        <div class="search-section">
+            <div class="search-box">
+                <ion-icon name="search" class="search-icon"></ion-icon>
+                <input type="text" class="search-input" placeholder="Search for help articles...">
+            </div>
+        </div>
+        
+        <div class="categories-section">
+            <h2 class="section-title">Browse by Category</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <ion-icon name="rocket"></ion-icon>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>Learn the basics of using Sweats and setting up your profile.</p>
+                    <div class="article-count">8 articles</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <ion-icon name="trophy"></ion-icon>
+                    </div>
+                    <h3>Challenges & Competitions</h3>
+                    <p>Everything about joining challenges and competing with friends.</p>
+                    <div class="article-count">12 articles</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <ion-icon name="heart"></ion-icon>
+                    </div>
+                    <h3>HealthKit Integration</h3>
+                    <p>Setting up and troubleshooting Apple HealthKit connectivity.</p>
+                    <div class="article-count">6 articles</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <h3>Social Features</h3>
+                    <p>Connect with friends, share achievements, and build community.</p>
+                    <div class="article-count">10 articles</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <ion-icon name="settings"></ion-icon>
+                    </div>
+                    <h3>Account & Settings</h3>
+                    <p>Manage your account, privacy settings, and preferences.</p>
+                    <div class="article-count">9 articles</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <ion-icon name="construct"></ion-icon>
+                    </div>
+                    <h3>Troubleshooting</h3>
+                    <p>Fix common issues and get technical support.</p>
+                    <div class="article-count">15 articles</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="popular-articles">
+            <h2 class="section-title">Popular Articles</h2>
+            
+            <div class="articles-list">
+                <div class="article-item">
+                    <div class="article-title">
+                        <ion-icon name="help-circle"></ion-icon>
+                        How do I connect Apple HealthKit?
+                    </div>
+                    <div class="article-description">
+                        Step-by-step guide to connecting your Apple HealthKit data with Sweats for automatic activity tracking.
+                    </div>
+                </div>
+                
+                <div class="article-item">
+                    <div class="article-title">
+                        <ion-icon name="help-circle"></ion-icon>
+                        How do challenges work?
+                    </div>
+                    <div class="article-description">
+                        Learn about different types of challenges, how to join them, and what happens when you complete one.
+                    </div>
+                </div>
+                
+                <div class="article-item">
+                    <div class="article-title">
+                        <ion-icon name="help-circle"></ion-icon>
+                        Adding friends on Sweats
+                    </div>
+                    <div class="article-description">
+                        Find and connect with friends to share your wellness journey and participate in group challenges.
+                    </div>
+                </div>
+                
+                <div class="article-item">
+                    <div class="article-title">
+                        <ion-icon name="help-circle"></ion-icon>
+                        Understanding your activity rings
+                    </div>
+                    <div class="article-description">
+                        Learn about the move, exercise, and stand rings and how they track your daily activity.
+                    </div>
+                </div>
+                
+                <div class="article-item">
+                    <div class="article-title">
+                        <ion-icon name="help-circle"></ion-icon>
+                        Privacy and data settings
+                    </div>
+                    <div class="article-description">
+                        Control what information you share and how your data is used within the Sweats community.
+                    </div>
+                </div>
+                
+                <div class="article-item">
+                    <div class="article-title">
+                        <ion-icon name="help-circle"></ion-icon>
+                        Troubleshooting sync issues
+                    </div>
+                    <div class="article-description">
+                        Fix common problems with data not syncing from Apple Health or activity not updating properly.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-support">
+            <h2>Still Need Help?</h2>
+            <p>Can't find what you're looking for? Our support team is here to help you get the most out of Sweats.</p>
+            
+            <div class="support-buttons">
+                <a href="contact.html" class="support-button">
+                    <ion-icon name="mail"></ion-icon>
+                    Contact Support
+                </a>
+                <a href="mailto:support@sweatsapp.com" class="support-button secondary">
+                    <ion-icon name="chatbubble"></ion-icon>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple search functionality
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const articles = document.querySelectorAll('.article-item');
+            
+            articles.forEach(article => {
+                const title = article.querySelector('.article-title').textContent.toLowerCase();
+                const description = article.querySelector('.article-description').textContent.toLowerCase();
+                
+                if (title.includes(query) || description.includes(query)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = query ? 'none' : 'block';
+                }
+            });
+        });
+        
+        // Category card click handlers
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.querySelector('h3').textContent;
+                alert(`Opening ${category} articles... (This would navigate to a dedicated category page)`);
+            });
+        });
+        
+        // Article click handlers
+        document.querySelectorAll('.article-item').forEach(article => {
+            article.addEventListener('click', function() {
+                const title = this.querySelector('.article-title').textContent;
+                alert(`Opening article: ${title}... (This would navigate to the full article)`);
+            });
+        });
+    </script>
+</body>
+</html>

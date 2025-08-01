@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Sweats</title>
+    <meta name="description" content="Choose the perfect plan for your wellness journey with Sweats.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent-green);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-green);
+            color: var(--primary-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-green);
+        }
+
+        .price-period {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .features-list ion-icon {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--primary-bg);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 2px solid var(--accent-green);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .faq-section {
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="landing.html" class="back-link">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Home
+        </a>
+        
+        <div class="header">
+            <h1>Pricing</h1>
+            <p>Choose the perfect plan for your wellness journey. Start free and upgrade when you're ready.</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Free</div>
+                <div class="plan-description">Perfect for getting started with social wellness</div>
+                <div class="price">
+                    <span class="price-amount">$0</span>
+                    <span class="price-period">forever</span>
+                </div>
+                <ul class="features-list">
+                    <li><ion-icon name="checkmark"></ion-icon> Basic activity tracking</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Join 3 challenges per month</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Community access</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Basic progress reports</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Apple HealthKit sync</li>
+                </ul>
+                <button class="cta-button secondary">Get Started Free</button>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-name">Premium</div>
+                <div class="plan-description">For serious wellness enthusiasts who want it all</div>
+                <div class="price">
+                    <span class="price-amount">$9.99</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="features-list">
+                    <li><ion-icon name="checkmark"></ion-icon> Everything in Free</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Unlimited challenges</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Create custom challenges</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Advanced analytics</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Priority support</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Premium badges & rewards</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Ad-free experience</li>
+                </ul>
+                <button class="cta-button">Start Premium Trial</button>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="plan-name">Team</div>
+                <div class="plan-description">Perfect for organizations and large groups</div>
+                <div class="price">
+                    <span class="price-amount">$49</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="features-list">
+                    <li><ion-icon name="checkmark"></ion-icon> Everything in Premium</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Up to 50 team members</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Team dashboard</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Custom branding</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Admin controls</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Dedicated support</li>
+                    <li><ion-icon name="checkmark"></ion-icon> Team analytics</li>
+                </ul>
+                <button class="cta-button secondary">Contact Sales</button>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I change my plan at any time?</div>
+                <div class="faq-answer">Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any differences.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is there a free trial for Premium?</div>
+                <div class="faq-answer">Absolutely! We offer a 14-day free trial for Premium so you can experience all the advanced features risk-free.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">We accept all major credit cards, Apple Pay, and PayPal. All payments are processed securely through Stripe.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel my subscription anytime?</div>
+                <div class="faq-answer">Yes, you can cancel your subscription at any time. You'll continue to have access to premium features until the end of your billing period.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

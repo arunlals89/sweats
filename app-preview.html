@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Preview - Sweats</title>
+    <meta name="description" content="Take a look at the Sweats app interface and user experience.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .screenshot-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .screenshot-mockup {
+            width: 200px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-content {
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .screenshot-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .mockup-icon {
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .feature-highlight {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .feature-highlight h4 {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-highlight p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshot-mockup {
+                width: 180px;
+                height: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Home
+        </a>
+        
+        <div class="header">
+            <h1>App Preview</h1>
+            <p>Get a sneak peek at the Sweats app interface and user experience.</p>
+        </div>
+        
+        <div class="screenshots-grid">
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1947.PNG" alt="Home Dashboard" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Home Dashboard</div>
+                <div class="screenshot-description">Your personalized wellness hub with activity rings, challenge progress, and daily goals.</div>
+                <div class="feature-highlight">
+                    <h4>Key Features</h4>
+                    <p>Activity rings, daily stats, quick challenge access, and motivational insights.</p>
+                </div>
+            </div>
+            
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1948.PNG" alt="Challenge Hub" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Challenge Hub</div>
+                <div class="screenshot-description">Browse and join exciting fitness challenges with friends and the global community.</div>
+                <div class="feature-highlight">
+                    <h4>Challenge Types</h4>
+                    <p>Weekly step challenges, workout streaks, meditation goals, and custom team competitions.</p>
+                </div>
+            </div>
+            
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1950.PNG" alt="Social Feed" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Social Feed</div>
+                <div class="screenshot-description">Stay motivated with friends' achievements, workout posts, and community support.</div>
+                <div class="feature-highlight">
+                    <h4>Social Features</h4>
+                    <p>Achievement sharing, workout photos, progress celebrations, and motivational comments.</p>
+                </div>
+            </div>
+            
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1951.PNG" alt="Progress Analytics" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Progress Analytics</div>
+                <div class="screenshot-description">Detailed insights into your fitness journey with trends, patterns, and achievements.</div>
+                <div class="feature-highlight">
+                    <h4>Insights Include</h4>
+                    <p>Weekly summaries, goal tracking, performance trends, and personalized recommendations.</p>
+                </div>
+            </div>
+            
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1952.PNG" alt="Personal Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Personal Profile</div>
+                <div class="screenshot-description">Showcase your fitness journey with badges, achievements, and personal milestones.</div>
+                <div class="feature-highlight">
+                    <h4>Profile Elements</h4>
+                    <p>Achievement badges, fitness stats, challenge history, and personal bests.</p>
+                </div>
+            </div>
+            
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1953.PNG" alt="Leaderboard" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Leaderboard</div>
+                <div class="screenshot-description">See how you rank against friends and the community in various challenges.</div>
+                <div class="feature-highlight">
+                    <h4>Competition Features</h4>
+                    <p>Real-time rankings, weekly leaderboards, achievement comparisons, and friendly competition.</p>
+                </div>
+            </div>
+            
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1954.PNG" alt="Challenge Details" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Challenge Details</div>
+                <div class="screenshot-description">Dive deep into challenge specifics, track your progress, and connect with participants.</div>
+                <div class="feature-highlight">
+                    <h4>Challenge Features</h4>
+                    <p>Progress tracking, participant chat, goal milestones, and achievement rewards.</p>
+                </div>
+            </div>
+            
+            <div class="screenshot-card">
+                <div class="screenshot-mockup">
+                    <img src="assets/images/screenshots/IMG_1955.PNG" alt="Settings & Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="screenshot-title">Settings & Profile</div>
+                <div class="screenshot-description">Personalize your experience with custom goals, notification preferences, and privacy controls.</div>
+                <div class="feature-highlight">
+                    <h4>Customization</h4>
+                    <p>Goal setting, notification management, privacy controls, and data sync preferences.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

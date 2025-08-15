@@ -1,14 +1,14 @@
 // Service Worker for caching resources
 const CACHE_NAME = 'sweats-v1';
 const urlsToCache = [
-  '/sweats/',
-  '/sweats/index.html',
-  '/sweats/assets/images/optimized/icon-64.png',
-  '/sweats/assets/images/optimized/icon-180.png',
-  '/sweats/assets/images/optimized/favicon.png',
-  '/sweats/assets/images/optimized/screenshots/IMG_1947-mobile.png',
-  '/sweats/assets/images/optimized/screenshots/IMG_1948-mobile.png',
-  '/sweats/assets/images/optimized/screenshots/IMG_1950-mobile.png',
+  '/',
+  '/index.html',
+  '/assets/images/optimized/icon-64.png',
+  '/assets/images/optimized/icon-180.png',
+  '/assets/images/optimized/favicon.png',
+  '/assets/images/optimized/screenshots/IMG_1947-mobile.png',
+  '/assets/images/optimized/screenshots/IMG_1948-mobile.png',
+  '/assets/images/optimized/screenshots/IMG_1950-mobile.png',
   'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap'
 ];
 

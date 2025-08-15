@@ -21,18 +21,117 @@
     <meta name="twitter:image" content="https://sweatsapp.com/twitter-image.png">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/optimized/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/optimized/icon-180.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00E676">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="assets/images/optimized/icon-64.png">
+    <link rel="preload" as="image" href="assets/images/optimized/screenshots/IMG_1947-mobile.png" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="assets/images/screenshots/IMG_1947.PNG" media="(min-width: 769px)">
+    
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
+    <!-- Critical CSS - inline for faster loading -->
+    <style>
+        /* Critical above-the-fold CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000000;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #3A3A3C;
+            border-top: 3px solid #00E676;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 6rem 0 4rem;
+            }
+        }
+    </style>
+    
+    <!-- Main CSS - loaded after critical CSS -->
     <style>
         :root {
             --primary-bg: #000000;
@@ -107,6 +206,31 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+            }
+        }
+
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            * {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+
+            .hero {
+                will-change: auto;
+            }
+
+            .phone-mockup {
+                animation: none;
+            }
+            
+            /* Reduce motion for better performance */
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
             }
         }
 
@@ -1351,7 +1475,7 @@
         <nav class="nav">
             <a href="#" class="logo">
                 <div class="logo-icon">
-                    <img src="assets/images/icon.png" alt="Sweats Logo" style="width: 20px; height: 20px;">
+                    <img src="assets/images/optimized/icon-64.png" alt="Sweats Logo" style="width: 20px; height: 20px;">
                 </div>
                 Sweats
             </a>
@@ -1420,7 +1544,12 @@
             <div class="hero-visual">
                 <div class="phone-mockup">
                     <div class="phone-screen">
-                        <img src="assets/images/screenshots/IMG_1947.PNG" alt="Sweats App Screenshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1947-mobile.png">
+                            <img src="assets/images/screenshots/IMG_1947.PNG" alt="Sweats App Screenshot" 
+                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;"
+                                 loading="lazy">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -1602,7 +1731,12 @@
                 <div class="screenshot-card scroll-animate">
                     <div class="screenshot-mockup">
                         <div class="screenshot-content">
-                            <img src="assets/images/screenshots/IMG_1947.PNG" alt="Activity Dashboard" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1947-mobile.png">
+                                <img src="assets/images/screenshots/IMG_1947.PNG" alt="Activity Dashboard" 
+                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;"
+                                     loading="lazy">
+                            </picture>
                         </div>
                     </div>
                     <h3 class="screenshot-title">Activity Dashboard</h3>
@@ -1614,7 +1748,12 @@
                 <div class="screenshot-card scroll-animate">
                     <div class="screenshot-mockup">
                         <div class="screenshot-content">
-                            <img src="assets/images/screenshots/IMG_1948.PNG" alt="Challenge Hub" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1948-mobile.png">
+                                <img src="assets/images/screenshots/IMG_1948.PNG" alt="Challenge Hub" 
+                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;"
+                                     loading="lazy">
+                            </picture>
                         </div>
                     </div>
                     <h3 class="screenshot-title">Challenge Hub</h3>
@@ -1626,7 +1765,12 @@
                 <div class="screenshot-card scroll-animate">
                     <div class="screenshot-mockup">
                         <div class="screenshot-content">
-                            <img src="assets/images/screenshots/IMG_1950.PNG" alt="Social Communities" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1950-mobile.png">
+                                <img src="assets/images/screenshots/IMG_1950.PNG" alt="Social Communities" 
+                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;"
+                                     loading="lazy">
+                            </picture>
                         </div>
                     </div>
                     <h3 class="screenshot-title">Social Communities</h3>
@@ -1777,6 +1921,19 @@
             }, 500);
         });
 
+        // Register service worker for caching
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
@@ -1906,7 +2063,7 @@
 
         // Performance optimization for mobile
         function isMobile() {
-            return window.innerWidth <= 768;
+            return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
 
         // Disable parallax on mobile for better performance
@@ -1915,6 +2072,17 @@
         window.addEventListener('resize', function() {
             parallaxEnabled = !isMobile();
         });
+
+        // Disable animations on mobile for better performance
+        if (isMobile()) {
+            document.documentElement.style.setProperty('--animation-duration', '0.3s');
+            
+            // Remove float animation from phone mockup on mobile
+            const phoneMockup = document.querySelector('.phone-mockup');
+            if (phoneMockup) {
+                phoneMockup.style.animation = 'none';
+            }
+        }
 
         // Parallax effect for hero section (disabled on mobile)
         window.addEventListener('scroll', function() {

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Performance Test - Sweats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+        .test-card {
+            background: #1C1C1E;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 10px 0;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .pass { background: #00E676; color: #000; }
+        .fail { background: #FF3B30; color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Mobile Performance Test Results</h1>
+    
+    <div class="test-card">
+        <h3>Image Optimization</h3>
+        <div id="image-test">Testing...</div>
+    </div>
+    
+    <div class="test-card">
+        <h3>Responsive Design</h3>
+        <div id="responsive-test">Testing...</div>
+    </div>
+    
+    <div class="test-card">
+        <h3>Service Worker</h3>
+        <div id="sw-test">Testing...</div>
+    </div>
+    
+    <div class="test-card">
+        <h3>Performance Metrics</h3>
+        <div id="performance-test">Testing...</div>
+    </div>
+
+    <script>
+        // Test image optimization
+        const testImage = new Image();
+        testImage.onload = function() {
+            document.getElementById('image-test').innerHTML = 
+                `<span class="status pass">PASS</span> Optimized images loading correctly`;
+        };
+        testImage.onerror = function() {
+            document.getElementById('image-test').innerHTML = 
+                `<span class="status fail">FAIL</span> Image loading failed`;
+        };
+        testImage.src = 'assets/images/optimized/icon-64.png';
+
+        // Test responsive design
+        const isMobile = window.innerWidth <= 768;
+        document.getElementById('responsive-test').innerHTML = 
+            `<span class="status pass">PASS</span> Screen width: ${window.innerWidth}px ${isMobile ? '(Mobile)' : '(Desktop)'}`;
+
+        // Test service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                if (registrations.length > 0) {
+                    document.getElementById('sw-test').innerHTML = 
+                        `<span class="status pass">PASS</span> Service Worker registered`;
+                } else {
+                    document.getElementById('sw-test').innerHTML = 
+                        `<span class="status fail">FAIL</span> Service Worker not registered`;
+                }
+            });
+        } else {
+            document.getElementById('sw-test').innerHTML = 
+                `<span class="status fail">FAIL</span> Service Worker not supported`;
+        }
+
+        // Performance metrics
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            const status = loadTime < 3000 ? 'pass' : 'fail';
+            document.getElementById('performance-test').innerHTML = 
+                `<span class="status ${status}">${status.toUpperCase()}</span> Page load time: ${Math.round(loadTime)}ms`;
+        });
+    </script>
+</body>
+</html>

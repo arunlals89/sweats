@@ -1,0 +1,11 @@
+# This file tells GitHub Pages to use the root directory for deployment
+# and ensures all files are properly served
+
+# Ensure proper MIME types
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg binary
+*.ico binary

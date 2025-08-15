@@ -1,0 +1,27 @@
+{
+  "name": "Sweats - Social Wellness Platform",
+  "short_name": "Sweats",
+  "description": "Transform your fitness journey with Sweats - the revolutionary social wellness platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00E676",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/optimized/icon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/optimized/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/optimized/icon-180.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

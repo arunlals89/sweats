@@ -2,7 +2,7 @@
   "name": "Sweats - Social Wellness Platform",
   "short_name": "Sweats",
   "description": "Transform your fitness journey with Sweats - the revolutionary social wellness platform",
-  "start_url": "/",
+  "start_url": "/sweats/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#00E676",

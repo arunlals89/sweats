@@ -247,7 +247,7 @@ app.get('/challenge/:shareId', (req, res) => {
     const challengeUrl = `${req.protocol}://${req.get('host')}/challenge/${shareId}`;
     const imageUrl = `${req.protocol}://${req.get('host')}/api/challenges/${shareId}/image`;
     const appDeepLink = `sweats://challenge/${challengeData.id}`;
-    const appStoreUrl = 'https://apps.apple.com/app/sweats'; // Update with actual App Store URL
+    const appStoreUrl = 'https://apps.apple.com/app/sweats'; // Update with actual App Store URL when available
     
     const html = `
 <!DOCTYPE html>
@@ -273,7 +273,7 @@ app.get('/challenge/:shareId', (req, res) => {
     <meta name="twitter:title" content="${challengeData.title} - Sweats Challenge">
     <meta name="twitter:description" content="${challengeData.description}">
     <meta name="twitter:image" content="${imageUrl}">
-    <meta name="twitter:site" content="@sweatsapp">
+    <meta name="twitter:site" content="@sweatsin">
     
     <!-- WhatsApp specific -->
     <meta property="og:image:alt" content="Join ${challengeData.title} on Sweats">

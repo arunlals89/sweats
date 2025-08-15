@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Sweats - Next-Generation Social Wellness Platform</title>
+    <meta name="description" content="Transform your fitness journey with Sweats - the revolutionary social wellness platform that combines community-driven challenges, Apple HealthKit integration, and gamification for sustainable healthy living.">
+    <meta name="keywords" content="fitness app, social wellness, Apple HealthKit, fitness challenges, community fitness, wellness platform, health tracking">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sweats - Next-Generation Social Wellness Platform">
+    <meta property="og:description" content="Join the wellness revolution. Build healthy habits, connect with communities, and achieve your fitness goals through the power of social motivation.">
+    <meta property="og:image" content="https://sweats.in/og-image.png">
+    <meta property="og:url" content="https://sweats.in">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sweats - Next-Generation Social Wellness Platform">
+    <meta name="twitter:description" content="Transform fitness from individual struggle to community-supported wellness journey.">
+    <meta name="twitter:image" content="https://sweats.in/twitter-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/optimized/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/optimized/icon-180.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00E676">
+    
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="assets/images/optimized/icon-64.png">
+    <link rel="preload" as="image" href="assets/images/optimized/screenshots/IMG_1947-mobile.png" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="assets/images/screenshots/IMG_1947.PNG" media="(min-width: 769px)">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Critical CSS - inline for faster loading -->
+    <style>
+        /* Critical above-the-fold CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000000;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #3A3A3C;
+            border-top: 3px solid #00E676;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 6rem 0 4rem;
+            }
+        }
+    </style>
+    
+    <!-- Main CSS - loaded after critical CSS -->
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --accent-purple: #BF5AF2;
+            --accent-orange: #FF9500;
+            --accent-red: #FF3B30;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --text-tertiary: #666666;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .feature-card:hover,
+            .screenshot-card:hover,
+            .stat-card:hover,
+            .mission-card:hover,
+            .vision-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .primary-button:hover,
+            .secondary-button:hover,
+            .cta-button:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        /* Improve tap targets for mobile */
+        @media (max-width: 768px) {
+            .primary-button,
+            .secondary-button,
+            .cta-button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .social-link {
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .mobile-menu-toggle {
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            * {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+
+            .hero {
+                will-change: auto;
+            }
+
+            .phone-mockup {
+                animation: none;
+            }
+            
+            /* Reduce motion for better performance */
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-green);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00C853;
+        }
+
+        /* Glassmorphism utilities */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 230, 118, 0.6);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-green);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: glow 3s infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .mobile-menu .nav-link:hover {
+            color: var(--accent-green);
+            transform: scale(1.1);
+        }
+
+        .mobile-menu .cta-button {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(0, 230, 118, 0.1) 0%, rgba(0, 0, 0, 1) 70%);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-button {
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: glow 3s infinite;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 230, 118, 0.4);
+        }
+
+        .secondary-button {
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        .secondary-button:hover {
+            border-color: var(--accent-green);
+            background: rgba(0, 230, 118, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
+            border-radius: 30px;
+            padding: 10px;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .activity-rings {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+        }
+
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 8px solid transparent;
+        }
+
+        .ring.move {
+            width: 200px;
+            height: 200px;
+            border-color: var(--accent-red);
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation: rotate 2s linear infinite;
+        }
+
+        .ring.exercise {
+            width: 160px;
+            height: 160px;
+            top: 20px;
+            left: 20px;
+            border-color: var(--accent-green);
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            animation: rotate 3s linear infinite reverse;
+        }
+
+        .ring.stand {
+            width: 120px;
+            height: 120px;
+            top: 40px;
+            left: 40px;
+            border-color: var(--accent-blue);
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 2rem;
+            background: var(--secondary-bg);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--primary-bg);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+            box-shadow: 0 20px 40px rgba(0, 230, 118, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-highlights {
+            list-style: none;
+        }
+
+        .feature-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .feature-highlight ion-icon {
+            color: var(--accent-green);
+        }
+
+        /* App Screenshots Section */
+        .screenshots {
+            padding: 6rem 2rem;
+            background: var(--secondary-bg);
+        }
+
+        .screenshots-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .screenshot-mockup {
+            width: 200px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-content {
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .screenshot-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .screenshot-description {
+            color: var(--text-secondary);
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 6rem 2rem;
+            background: var(--primary-bg);
+        }
+
+        .mission-vision-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .mission-card, .vision-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .mission-icon, .vision-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .mission-icon {
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+        }
+
+        .vision-icon {
+            background: linear-gradient(135deg, var(--accent-blue), #005BB5);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.1), rgba(0, 122, 255, 0.1));
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .app-store-badge {
+            height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .app-store-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .coming-soon {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--accent-green);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+                gap: 3rem;
+            }
+
+            .features-container,
+            .screenshots-container,
+            .mission-vision-container,
+            .cta-container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 6rem 0 4rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .primary-button,
+            .secondary-button {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .mission-vision-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+
+            .phone-mockup {
+                width: 280px;
+                height: 560px;
+            }
+
+            .activity-rings {
+                width: 180px;
+                height: 180px;
+            }
+
+            .ring.move {
+                width: 180px;
+                height: 180px;
+            }
+
+            .ring.exercise {
+                width: 140px;
+                height: 140px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .ring.stand {
+                width: 100px;
+                height: 100px;
+                top: 40px;
+                left: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 5rem 0 3rem;
+            }
+
+            .hero-content {
+                padding: 0.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .primary-button,
+            .secondary-button {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 260px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+
+            .screenshot-mockup {
+                width: 160px;
+                height: 320px;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-title {
+                font-size: 1.3rem;
+            }
+
+            .feature-description {
+                font-size: 0.95rem;
+            }
+
+            .mission-card,
+            .vision-card {
+                padding: 2rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .card-description {
+                font-size: 1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .social-links {
+                gap: 0.75rem;
+            }
+
+            .social-link {
+                width: 36px;
+                height: 36px;
+            }
+
+            /* Email signup mobile optimization */
+            #email-signup {
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+                max-width: 100% !important;
+            }
+
+            #email-input {
+                text-align: center;
+                font-size: 0.95rem !important;
+                padding: 1rem !important;
+            }
+
+            #notify-btn {
+                width: 100% !important;
+                padding: 1rem 1.5rem !important;
+                font-size: 1rem !important;
+            }
+
+            .cta-section div[style*="max-width: 400px"] {
+                max-width: 100% !important;
+                margin: 2rem 1rem 0 !important;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .cta-title {
+                font-size: 1.6rem;
+            }
+
+            .phone-mockup {
+                width: 200px;
+                height: 400px;
+            }
+
+            .screenshot-mockup {
+                width: 140px;
+                height: 280px;
+            }
+
+            .primary-button,
+            .secondary-button {
+                padding: 0.8rem 1.3rem;
+                font-size: 0.95rem;
+            }
+
+            .feature-card,
+            .mission-card,
+            .vision-card {
+                padding: 1.2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: var(--primary-bg);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hover effects for interactive elements */
+        .interactive:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s ease;
+        }
+
+        /* Focus states for accessibility */
+        .cta-button:focus,
+        .primary-button:focus,
+        .secondary-button:focus {
+            outline: 2px solid var(--accent-green);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/optimized/icon-64.png" alt="Sweats Logo" style="width: 20px; height: 20px;">
+                </div>
+                Sweats
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#screenshots" class="nav-link">App Preview</a></li>
+                <li><a href="#mission" class="nav-link">About</a></li>
+                <li><a href="#download" class="nav-link">Download</a></li>
+            </ul>
+            
+            <a href="#download" class="cta-button">
+                <ion-icon name="download-outline"></ion-icon>
+                Get Early Access
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#screenshots" class="nav-link">App Preview</a>
+            <a href="#mission" class="nav-link">About</a>
+            <a href="#download" class="nav-link">Download</a>
+            <a href="#download" class="cta-button">
+                <ion-icon name="download-outline"></ion-icon>
+                Get Early Access
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <ion-icon name="star" style="color: var(--accent-green);"></ion-icon>
+                    Next-Generation Wellness Platform
+                </div>
+                
+                <h1 class="hero-title">
+                    Transform Fitness Into<br>
+                    <span style="background: linear-gradient(135deg, var(--accent-green), var(--accent-blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Social Wellness</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Join the wellness revolution with Sweats - where individual fitness becomes community-driven wellness. 
+                    Build healthy habits, connect with like-minded people, and achieve your goals through the power of social motivation.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#download" class="primary-button">
+                        <ion-icon name="rocket"></ion-icon>
+                        Start Your Journey
+                    </a>
+                    <a href="#features" class="secondary-button">
+                        <ion-icon name="play"></ion-icon>
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1947-mobile.png">
+                            <img src="assets/images/screenshots/IMG_1947.PNG" alt="Sweats App Screenshot" 
+                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;"
+                                 loading="lazy">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card scroll-animate">
+                <div class="stat-number" data-target="85">0</div>
+                <div class="stat-label">% Higher Retention</div>
+            </div>
+            <div class="stat-card scroll-animate">
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">x More Effective</div>
+            </div>
+            <div class="stat-card scroll-animate">
+                <div class="stat-number" data-target="73">0</div>
+                <div class="stat-label">% Community Driven</div>
+            </div>
+            <div class="stat-card scroll-animate">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">/7 Motivation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header scroll-animate">
+                <div class="section-badge">
+                    <ion-icon name="sparkles" style="color: var(--accent-green);"></ion-icon>
+                    Revolutionary Features
+                </div>
+                <h2 class="section-title">Why Sweats Changes Everything</h2>
+                <p class="section-subtitle">
+                    Experience the future of wellness with features designed to make healthy living social, 
+                    sustainable, and incredibly engaging.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--accent-green), #00C853);">
+                        <ion-icon name="people" style="color: white;"></ion-icon>
+                    </div>
+                    <h3 class="feature-title">Social Wellness Communities</h3>
+                    <p class="feature-description">
+                        Join "Squads" - intimate wellness communities where real accountability happens. 
+                        Connect with people who share your goals and support your journey.
+                    </p>
+                    <ul class="feature-highlights">
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Interest-based community matching
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Real-time progress sharing
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Expert-moderated discussions
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Safe, inclusive environments
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--accent-blue), #005BB5);">
+                        <ion-icon name="fitness" style="color: white;"></ion-icon>
+                    </div>
+                    <h3 class="feature-title">Advanced HealthKit Integration</h3>
+                    <p class="feature-description">
+                        Seamlessly sync with Apple Health for automatic, comprehensive wellness tracking. 
+                        No manual logging - just live your life and let technology do the work.
+                    </p>
+                    <ul class="feature-highlights">
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Automatic activity detection
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Real-time health metrics
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            AI-powered insights
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Privacy-first data handling
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--accent-purple), #9F2FFF);">
+                        <ion-icon name="game-controller" style="color: white;"></ion-icon>
+                    </div>
+                    <h3 class="feature-title">Gamified Wellness Challenges</h3>
+                    <p class="feature-description">
+                        Transform boring goals into exciting adventures. Five challenge types with real-time 
+                        leaderboards make fitness feel like your favorite game.
+                    </p>
+                    <ul class="feature-highlights">
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Distance, Steps, Weight Loss challenges
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Workout & Consistency tracking
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Live leaderboards
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Achievement system
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, var(--accent-orange), #FF7A00);">
+                        <ion-icon name="phone-portrait" style="color: white;"></ion-icon>
+                    </div>
+                    <h3 class="feature-title">Ultra-Modern Design</h3>
+                    <p class="feature-description">
+                        Experience the most beautiful fitness app ever created. Dark theme with glassmorphic 
+                        elements and 60fps animations make wellness feel premium.
+                    </p>
+                    <ul class="feature-highlights">
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Sophisticated dark theme
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Glassmorphic design elements
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Smooth 60fps animations
+                        </li>
+                        <li class="feature-highlight">
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                            Accessibility-first approach
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Section -->
+    <section class="screenshots" id="screenshots">
+        <div class="screenshots-container">
+            <div class="section-header scroll-animate">
+                <div class="section-badge">
+                    <ion-icon name="phone-portrait" style="color: var(--accent-blue);"></ion-icon>
+                    App Preview
+                </div>
+                <h2 class="section-title">See Sweats In Action</h2>
+                <p class="section-subtitle">
+                    Get a glimpse of the beautiful, intuitive interface that makes wellness tracking effortless and engaging.
+                </p>
+            </div>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot-card scroll-animate">
+                    <div class="screenshot-mockup">
+                        <div class="screenshot-content">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1947-mobile.png">
+                                <img src="assets/images/screenshots/IMG_1947.PNG" alt="Activity Dashboard" 
+                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                    </div>
+                    <h3 class="screenshot-title">Activity Dashboard</h3>
+                    <p class="screenshot-description">
+                        Beautiful activity rings and real-time health metrics display your daily progress at a glance.
+                    </p>
+                </div>
+                
+                <div class="screenshot-card scroll-animate">
+                    <div class="screenshot-mockup">
+                        <div class="screenshot-content">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1948-mobile.png">
+                                <img src="assets/images/screenshots/IMG_1948.PNG" alt="Challenge Hub" 
+                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                    </div>
+                    <h3 class="screenshot-title">Challenge Hub</h3>
+                    <p class="screenshot-description">
+                        Join exciting fitness challenges with real-time leaderboards and social competition features.
+                    </p>
+                </div>
+                
+                <div class="screenshot-card scroll-animate">
+                    <div class="screenshot-mockup">
+                        <div class="screenshot-content">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/images/optimized/screenshots/IMG_1950-mobile.png">
+                                <img src="assets/images/screenshots/IMG_1950.PNG" alt="Social Communities" 
+                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                    </div>
+                    <h3 class="screenshot-title">Social Communities</h3>
+                    <p class="screenshot-description">
+                        Connect with wellness communities that match your interests and goals for maximum motivation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision" id="mission">
+        <div class="mission-vision-container">
+            <div class="mission-card scroll-animate">
+                <div class="mission-icon">
+                    <ion-icon name="heart" style="color: white;"></ion-icon>
+                </div>
+                <h3 class="card-title">Our Mission</h3>
+                <p class="card-description">
+                    To democratize wellness by creating the world's most engaging social fitness platform 
+                    that makes healthy living accessible, enjoyable, and sustainable for everyone. We believe 
+                    that together, we achieve more than we ever could alone.
+                </p>
+            </div>
+            
+            <div class="vision-card scroll-animate">
+                <div class="vision-icon">
+                    <ion-icon name="telescope" style="color: white;"></ion-icon>
+                </div>
+                <h3 class="card-title">Our Vision</h3>
+                <p class="card-description">
+                    A world where every person has the tools, community, and motivation to achieve their 
+                    healthiest, happiest life through the power of connected wellness experiences. Where 
+                    technology amplifies human connection rather than replacing it.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="download">
+        <div class="cta-container scroll-animate">
+            <h2 class="cta-title">Ready to Transform Your Wellness Journey?</h2>
+            <p class="cta-subtitle">
+                Join thousands of users who are already experiencing the future of social fitness. 
+                Get early access and be part of the wellness revolution.
+            </p>
+            
+            <div class="cta-buttons">
+                <!-- App Store badges would go here when app is released -->
+                <div class="coming-soon">
+                    <ion-icon name="rocket" style="margin-right: 0.5rem;"></ion-icon>
+                    Coming Soon to App Store
+                </div>
+            </div>
+            
+            <!-- Email signup for early access -->
+            <div style="max-width: 400px; margin: 2rem auto 0;">
+                <div id="email-signup" style="display: flex; gap: 0.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 0.5rem; backdrop-filter: blur(10px);">
+                    <input type="email" id="email-input" placeholder="Enter your email for early access" 
+                           style="flex: 1; background: none; border: none; color: var(--text-primary); padding: 0.75rem; font-size: 1rem; outline: none;">
+                    <button id="notify-btn" style="background: linear-gradient(135deg, var(--accent-green), #00C853); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        Notify Me
+                    </button>
+                </div>
+                <p style="font-size: 0.875rem; color: var(--text-tertiary); text-align: center; margin-top: 1rem;">
+                    Be the first to know when Sweats launches. No spam, just wellness.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sweats</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Transforming fitness into social wellness experiences. 
+                        Join the community that's redefining what it means to be healthy.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="features.html" class="footer-link">Features</a></li>
+                        <li><a href="app-preview.html" class="footer-link">App Preview</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                        <li><a href="roadmap.html" class="footer-link">Roadmap</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="careers.html" class="footer-link">Careers</a></li>
+                        <li><a href="press-kit.html" class="footer-link">Press Kit</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help-center.html" class="footer-link">Help Center</a></li>
+                        <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="footer-link">Terms of Service</a></li>
+                        <li><a href="cookie-policy.html" class="footer-link">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                    <a href="#" class="social-link">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+                </div>
+                
+                <p>&copy; 2025 Sweats Technologies Pvt Ltd. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+                    Made with ❤️ for the wellness community
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            loading.style.opacity = '0';
+            setTimeout(() => {
+                loading.style.display = 'none';
+            }, 500);
+        });
+
+        // Register service worker for caching
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with scroll-animate class
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number[data-target]');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const increment = target / 50; // Animate over 50 frames
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                // Start animation when element is visible
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                statsObserver.observe(counter);
+            });
+        }
+
+        // Initialize counter animations
+        animateCounters();
+
+        // Email signup functionality
+        document.getElementById('notify-btn').addEventListener('click', function() {
+            const email = document.getElementById('email-input').value;
+            if (email && email.includes('@')) {
+                alert('Thank you for your interest! We\'ll notify you when Sweats launches.');
+                document.getElementById('email-input').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuToggle.querySelector('ion-icon');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            const isActive = mobileMenu.classList.contains('active');
+            
+            if (isActive) {
+                mobileMenu.classList.remove('active');
+                mobileMenuIcon.setAttribute('name', 'menu');
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileMenu.classList.add('active');
+                mobileMenuIcon.setAttribute('name', 'close');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.mobile-menu .nav-link, .mobile-menu .cta-button').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileMenuIcon.setAttribute('name', 'menu');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.remove('active');
+                mobileMenuIcon.setAttribute('name', 'menu');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Performance optimization for mobile
+        function isMobile() {
+            return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Disable parallax on mobile for better performance
+        let parallaxEnabled = !isMobile();
+
+        window.addEventListener('resize', function() {
+            parallaxEnabled = !isMobile();
+        });
+
+        // Disable animations on mobile for better performance
+        if (isMobile()) {
+            document.documentElement.style.setProperty('--animation-duration', '0.3s');
+            
+            // Remove float animation from phone mockup on mobile
+            const phoneMockup = document.querySelector('.phone-mockup');
+            if (phoneMockup) {
+                phoneMockup.style.animation = 'none';
+            }
+        }
+
+        // Parallax effect for hero section (disabled on mobile)
+        window.addEventListener('scroll', function() {
+            if (!parallaxEnabled) return;
+            
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.phone-mockup');
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Reduce animations on mobile for better performance
+        if (isMobile()) {
+            document.documentElement.style.setProperty('--animation-duration', '0.3s');
+        }
+
+        // Add touch feedback for mobile interactions
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.primary-button, .secondary-button, .cta-button, .feature-card, .screenshot-card').forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                
+                element.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        }
+
+        // Add hover effects to interactive elements
+        document.querySelectorAll('.feature-card, .screenshot-card, .stat-card').forEach(card => {
+            card.classList.add('interactive');
+        });
+
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Performance optimization: Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debounce to scroll events
+        window.addEventListener('scroll', debounce(function() {
+            // Scroll-dependent animations here
+        }, 10));
+
+        // Add loading states to buttons
+        document.querySelectorAll('button, .primary-button, .secondary-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.style.opacity = '0.7';
+                setTimeout(() => {
+                    this.style.opacity = '1';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

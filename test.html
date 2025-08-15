@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Challenge Sharing - Sweats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        
+        button {
+            background: #00E676;
+            color: #000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background: #00C853;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+        
+        .share-url {
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+        
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .qr-code img {
+            max-width: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏃‍♂️ Sweats Challenge Sharing Test</h1>
+    
+    <form id="challengeForm">
+        <div class="form-group">
+            <label for="title">Challenge Title:</label>
+            <input type="text" id="title" name="title" value="30-Day Step Challenge" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required>Walk 10,000 steps daily for 30 days and transform your health!</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="type">Challenge Type:</label>
+            <select id="type" name="type" required>
+                <option value="steps">Steps</option>
+                <option value="distance">Distance</option>
+                <option value="workout">Workout</option>
+                <option value="weight_loss">Weight Loss</option>
+                <option value="consistency">Consistency</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="goal">Goal:</label>
+            <input type="number" id="goal" name="goal" value="10000" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="unit">Unit:</label>
+            <input type="text" id="unit" name="unit" value="steps" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="duration">Duration (days):</label>
+            <input type="number" id="duration" name="duration" value="30" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="participants">Current Participants:</label>
+            <input type="number" id="participants" name="participants" value="15">
+        </div>
+        
+        <div class="form-group">
+            <label for="createdBy">Created By:</label>
+            <input type="text" id="createdBy" name="createdBy" value="Test User">
+        </div>
+        
+        <div class="form-group">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty" name="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        
+        <button type="submit">Create Shareable Challenge</button>
+    </form>
+    
+    <div id="result" class="result" style="display: none;">
+        <h3>Challenge Created Successfully! 🎉</h3>
+        <div>
+            <strong>Share URL:</strong>
+            <div id="shareUrl" class="share-url"></div>
+        </div>
+        
+        <div>
+            <button onclick="copyUrl()">📋 Copy URL</button>
+            <button onclick="openShare()">🌐 Open Share Page</button>
+            <button onclick="viewImage()">🖼️ View Preview Image</button>
+        </div>
+        
+        <div id="qrCode" class="qr-code"></div>
+        
+        <div>
+            <h4>Share to Social Media:</h4>
+            <button onclick="shareToWhatsApp()">WhatsApp</button>
+            <button onclick="shareToTwitter()">Twitter</button>
+            <button onclick="shareToFacebook()">Facebook</button>
+        </div>
+    </div>
+
+    <script>
+        let currentShareData = null;
+
+        document.getElementById('challengeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const challengeData = Object.fromEntries(formData.entries());
+            
+            // Convert numeric fields
+            challengeData.goal = parseInt(challengeData.goal);
+            challengeData.duration = parseInt(challengeData.duration);
+            challengeData.participants = parseInt(challengeData.participants);
+
+            try {
+                const response = await fetch('/api/challenges', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(challengeData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    currentShareData = result.data;
+                    document.getElementById('shareUrl').textContent = result.data.shareableUrl;
+                    
+                    if (result.data.qrCode) {
+                        document.getElementById('qrCode').innerHTML = 
+                            `<img src="${result.data.qrCode}" alt="QR Code">`;
+                    }
+                    
+                    document.getElementById('result').style.display = 'block';
+                } else {
+                    alert('Failed to create challenge: ' + result.message);
+                }
+            } catch (error) {
+                alert('Error creating challenge: ' + error.message);
+            }
+        });
+
+        function copyUrl() {
+            navigator.clipboard.writeText(currentShareData.shareableUrl).then(() => {
+                alert('URL copied to clipboard!');
+            });
+        }
+
+        function openShare() {
+            window.open(currentShareData.shareableUrl, '_blank');
+        }
+
+        function viewImage() {
+            const imageUrl = `/api/challenges/${currentShareData.shareId}/image`;
+            window.open(imageUrl, '_blank');
+        }
+
+        function shareToWhatsApp() {
+            const text = encodeURIComponent(`Check out this challenge on Sweats! ${currentShareData.shareableUrl}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        function shareToTwitter() {
+            const text = encodeURIComponent('Check out this challenge on Sweats!');
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(currentShareData.shareableUrl)}`, '_blank');
+        }
+
+        function shareToFacebook() {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentShareData.shareableUrl)}`, '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Kit - Sweats</title>
+    <meta name="description" content="Media resources and press materials for Sweats - the social wellness platform.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .resource-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-button {
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--primary-bg);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
+        }
+
+        .company-info {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            margin-bottom: 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            color: var(--text-secondary);
+        }
+
+        .contact-info {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            text-align: center;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), #005BB5);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-card h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="landing.html" class="back-link">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Home
+        </a>
+        
+        <div class="header">
+            <h1>Press Kit</h1>
+            <p>Media resources, company information, and press materials for Sweats.</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Company Information</h2>
+            <div class="company-info">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Company Name</div>
+                        <div class="info-value">Sweats Inc.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Founded</div>
+                        <div class="info-value">2024</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Headquarters</div>
+                        <div class="info-value">San Francisco, CA</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Industry</div>
+                        <div class="info-value">Health & Fitness Technology</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Platform</div>
+                        <div class="info-value">iOS (Android coming soon)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Mission</div>
+                        <div class="info-value">Transforming individual fitness into community-supported wellness journeys</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Brand Assets</h2>
+            <p class="section-description">Download our logos, brand guidelines, and visual assets for media use.</p>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <ion-icon name="image"></ion-icon>
+                    </div>
+                    <h3>Logo Package</h3>
+                    <p>High-resolution logos in various formats (PNG, SVG, EPS) for print and digital use.</p>
+                    <a href="#" class="download-button">
+                        <ion-icon name="download"></ion-icon>
+                        Download ZIP
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <ion-icon name="color-palette"></ion-icon>
+                    </div>
+                    <h3>Brand Guidelines</h3>
+                    <p>Complete brand style guide including colors, typography, and usage guidelines.</p>
+                    <a href="#" class="download-button">
+                        <ion-icon name="download"></ion-icon>
+                        Download PDF
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <ion-icon name="phone-portrait"></ion-icon>
+                    </div>
+                    <h3>App Screenshots</h3>
+                    <p>High-quality app screenshots for articles, reviews, and promotional materials.</p>
+                    <a href="#" class="download-button">
+                        <ion-icon name="download"></ion-icon>
+                        Download ZIP
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <h3>Team Photos</h3>
+                    <p>Professional headshots and team photos for media coverage and articles.</p>
+                    <a href="#" class="download-button">
+                        <ion-icon name="download"></ion-icon>
+                        Download ZIP
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <ion-icon name="document-text"></ion-icon>
+                    </div>
+                    <h3>Product Fact Sheet</h3>
+                    <p>Key product information, features, and statistics in a convenient fact sheet format.</p>
+                    <a href="#" class="download-button">
+                        <ion-icon name="download"></ion-icon>
+                        Download PDF
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <ion-icon name="videocam"></ion-icon>
+                    </div>
+                    <h3>Product Demo Video</h3>
+                    <p>High-quality product demonstration video showcasing key features and user experience.</p>
+                    <a href="#" class="download-button">
+                        <ion-icon name="download"></ion-icon>
+                        Download MP4
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Media Contact</h2>
+            <p class="section-description">Get in touch with our team for interviews, product demos, or additional information.</p>
+            
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <ion-icon name="mail"></ion-icon>
+                        </div>
+                        <h4>Press Inquiries</h4>
+                        <a href="mailto:press@sweatsapp.com">press@sweatsapp.com</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <ion-icon name="person"></ion-icon>
+                        </div>
+                        <h4>CEO Interviews</h4>
+                        <a href="mailto:ceo@sweatsapp.com">ceo@sweatsapp.com</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <ion-icon name="business"></ion-icon>
+                        </div>
+                        <h4>Partnership Inquiries</h4>
+                        <a href="mailto:partnerships@sweatsapp.com">partnerships@sweatsapp.com</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <ion-icon name="help"></ion-icon>
+                        </div>
+                        <h4>General Information</h4>
+                        <a href="mailto:hello@sweatsapp.com">hello@sweatsapp.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Recent News & Coverage</h2>
+            <p class="section-description">Latest press coverage and company announcements.</p>
+            
+            <div class="company-info">
+                <h4 style="margin-bottom: 1rem;">Featured Coverage</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                        <strong>"The Future of Social Fitness"</strong> - TechCrunch, Coming Soon
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                        <strong>"How Sweats is Revolutionizing Wellness"</strong> - Forbes, Coming Soon
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                        <strong>"App Spotlight: Sweats"</strong> - Apple App Store, Coming Soon
+                    </li>
+                </ul>
+                
+                <p style="color: var(--text-secondary); margin-top: 1rem;">
+                    For the latest news and updates, follow us on social media or subscribe to our newsletter.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

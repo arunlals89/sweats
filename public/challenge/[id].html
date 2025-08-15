@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Dynamic meta tags - will be replaced by server -->
+    <title>{{CHALLENGE_TITLE}} - Sweats Challenge</title>
+    <meta name="description" content="{{CHALLENGE_DESCRIPTION}}">
+    
+    <!-- Open Graph meta tags for social sharing -->
+    <meta property="og:title" content="{{CHALLENGE_TITLE}} - Join the Challenge!">
+    <meta property="og:description" content="{{CHALLENGE_DESCRIPTION}}">
+    <meta property="og:image" content="{{CHALLENGE_IMAGE}}">
+    <meta property="og:url" content="https://www.sweats.in/challenge/{{CHALLENGE_ID}}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sweats">
+    
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{CHALLENGE_TITLE}} - Join the Challenge!">
+    <meta name="twitter:description" content="{{CHALLENGE_DESCRIPTION}}">
+    <meta name="twitter:image" content="{{CHALLENGE_IMAGE}}">
+    <meta name="twitter:site" content="@sweatsapp">
+    
+    <!-- App Store smart banner -->
+    <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID, app-argument=sweats://challenge/{{CHALLENGE_ID}}">
+    <meta name="google-play-app" content="app-id=com.sweats.app, app-argument=sweats://challenge/{{CHALLENGE_ID}}">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .challenge-card {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid #333;
+            backdrop-filter: blur(10px);
+        }
+        
+        .challenge-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #00E676, #00BCD4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .challenge-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #00E676;
+        }
+        
+        .challenge-description {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .challenge-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00E676;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #00E676;
+            color: black;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo {
+            margin-top: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #00E676;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .challenge-card {
+                padding: 25px;
+            }
+            
+            .challenge-title {
+                font-size: 24px;
+            }
+            
+            .challenge-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="challenge-card">
+            <div class="challenge-image">
+                🏆
+            </div>
+            
+            <h1 class="challenge-title">{{CHALLENGE_TITLE}}</h1>
+            <p class="challenge-description">{{CHALLENGE_DESCRIPTION}}</p>
+            
+            <div class="challenge-stats">
+                <div class="stat">
+                    <div class="stat-number">{{PARTICIPANTS_COUNT}}</div>
+                    <div class="stat-label">Participants</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">{{DIFFICULTY}}</div>
+                    <div class="stat-label">Difficulty</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">{{DURATION}}</div>
+                    <div class="stat-label">Duration</div>
+                </div>
+            </div>
+            
+            <div class="download-buttons">
+                <a href="https://apps.apple.com/app/sweats" class="download-btn">
+                    📱 Download for iOS
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.sweats.app" class="download-btn">
+                    📱 Download for Android
+                </a>
+            </div>
+        </div>
+        
+        <div class="logo">SWEATS</div>
+    </div>
+    
+    <script>
+        // Redirect to app if installed, otherwise stay on page
+        const appScheme = 'sweats://challenge/{{CHALLENGE_ID}}';
+        const userAgent = navigator.userAgent;
+        
+        // Try to open app after a short delay
+        setTimeout(() => {
+            if (/iPhone|iPad|iPod/.test(userAgent)) {
+                window.location.href = appScheme;
+            } else if (/Android/.test(userAgent)) {
+                window.location.href = appScheme;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

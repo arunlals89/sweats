@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap - Sweats</title>
+    <meta name="description" content="See what's coming next for the Sweats platform and our development timeline.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --accent-orange: #FF9500;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-green), var(--accent-blue));
+        }
+
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+
+        .roadmap-item.in-progress::before {
+            background: var(--accent-orange);
+            animation: pulse 2s infinite;
+        }
+
+        .roadmap-item.upcoming::before {
+            background: var(--border-color);
+        }
+
+        .roadmap-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .roadmap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-date {
+            background: var(--accent-green);
+            color: var(--primary-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .roadmap-date.in-progress {
+            background: var(--accent-orange);
+        }
+
+        .roadmap-date.upcoming {
+            background: var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .roadmap-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .roadmap-features {
+            list-style: none;
+        }
+
+        .roadmap-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .roadmap-features ion-icon {
+            color: var(--accent-green);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .status-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.completed {
+            background: var(--accent-green);
+        }
+
+        .legend-dot.in-progress {
+            background: var(--accent-orange);
+        }
+
+        .legend-dot.upcoming {
+            background: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .roadmap-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .status-legend {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="landing.html" class="back-link">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Home
+        </a>
+        
+        <div class="header">
+            <h1>Roadmap</h1>
+            <p>See what's coming next for Sweats and our exciting development journey ahead.</p>
+        </div>
+        
+        <div class="status-legend">
+            <div class="legend-item">
+                <div class="legend-dot completed"></div>
+                <span>Completed</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot in-progress"></div>
+                <span>In Progress</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot upcoming"></div>
+                <span>Upcoming</span>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="roadmap-item">
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <div>
+                            <div class="roadmap-title">Foundation & Core Features</div>
+                        </div>
+                        <div class="roadmap-date">Q3 2024</div>
+                    </div>
+                    <div class="roadmap-description">
+                        Built the core platform with essential social wellness features and Apple HealthKit integration.
+                    </div>
+                    <ul class="roadmap-features">
+                        <li><ion-icon name="checkmark"></ion-icon> Apple HealthKit integration</li>
+                        <li><ion-icon name="checkmark"></ion-icon> Basic challenge system</li>
+                        <li><ion-icon name="checkmark"></ion-icon> User profiles and social features</li>
+                        <li><ion-icon name="checkmark"></ion-icon> Activity tracking and progress visualization</li>
+                        <li><ion-icon name="checkmark"></ion-icon> iOS app launch</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roadmap-item in-progress">
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <div>
+                            <div class="roadmap-title">Enhanced Gamification</div>
+                        </div>
+                        <div class="roadmap-date in-progress">Q4 2024</div>
+                    </div>
+                    <div class="roadmap-description">
+                        Expanding the gamification system with advanced rewards, achievements, and community features.
+                    </div>
+                    <ul class="roadmap-features">
+                        <li><ion-icon name="checkmark"></ion-icon> Advanced achievement system</li>
+                        <li><ion-icon name="checkmark"></ion-icon> Custom challenge creation</li>
+                        <li><ion-icon name="trophy"></ion-icon> Leaderboards and competitions</li>
+                        <li><ion-icon name="trophy"></ion-icon> Team challenges and group goals</li>
+                        <li><ion-icon name="trophy"></ion-icon> Premium subscription features</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roadmap-item upcoming">
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <div>
+                            <div class="roadmap-title">Android Launch & Cross-Platform</div>
+                        </div>
+                        <div class="roadmap-date upcoming">Q1 2025</div>
+                    </div>
+                    <div class="roadmap-description">
+                        Bringing Sweats to Android users and enabling cross-platform competitions and social features.
+                    </div>
+                    <ul class="roadmap-features">
+                        <li><ion-icon name="time"></ion-icon> Android app development</li>
+                        <li><ion-icon name="time"></ion-icon> Google Fit integration</li>
+                        <li><ion-icon name="time"></ion-icon> Cross-platform challenges</li>
+                        <li><ion-icon name="time"></ion-icon> Enhanced notification system</li>
+                        <li><ion-icon name="time"></ion-icon> Improved onboarding experience</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roadmap-item upcoming">
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <div>
+                            <div class="roadmap-title">AI-Powered Insights</div>
+                        </div>
+                        <div class="roadmap-date upcoming">Q2 2025</div>
+                    </div>
+                    <div class="roadmap-description">
+                        Implementing AI to provide personalized insights, recommendations, and predictive health analytics.
+                    </div>
+                    <ul class="roadmap-features">
+                        <li><ion-icon name="time"></ion-icon> Personalized workout recommendations</li>
+                        <li><ion-icon name="time"></ion-icon> AI-powered goal setting</li>
+                        <li><ion-icon name="time"></ion-icon> Predictive health insights</li>
+                        <li><ion-icon name="time"></ion-icon> Smart challenge matching</li>
+                        <li><ion-icon name="time"></ion-icon> Wellness trend analysis</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roadmap-item upcoming">
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <div>
+                            <div class="roadmap-title">Enterprise & Corporate Wellness</div>
+                        </div>
+                        <div class="roadmap-date upcoming">Q3 2025</div>
+                    </div>
+                    <div class="roadmap-description">
+                        Launching enterprise features for corporate wellness programs and large organizations.
+                    </div>
+                    <ul class="roadmap-features">
+                        <li><ion-icon name="time"></ion-icon> Corporate dashboard</li>
+                        <li><ion-icon name="time"></ion-icon> HR integration tools</li>
+                        <li><ion-icon name="time"></ion-icon> Custom branding options</li>
+                        <li><ion-icon name="time"></ion-icon> Advanced analytics and reporting</li>
+                        <li><ion-icon name="time"></ion-icon> Bulk user management</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roadmap-item upcoming">
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <div>
+                            <div class="roadmap-title">Global Expansion & Integrations</div>
+                        </div>
+                        <div class="roadmap-date upcoming">Q4 2025</div>
+                    </div>
+                    <div class="roadmap-description">
+                        Expanding internationally with localization and integrating with more fitness platforms and wearables.
+                    </div>
+                    <ul class="roadmap-features">
+                        <li><ion-icon name="time"></ion-icon> Multi-language support</li>
+                        <li><ion-icon name="time"></ion-icon> Fitbit and Garmin integration</li>
+                        <li><ion-icon name="time"></ion-icon> Regional challenges and competitions</li>
+                        <li><ion-icon name="time"></ion-icon> Local currency support</li>
+                        <li><ion-icon name="time"></ion-icon> Cultural wellness programs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

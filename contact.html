@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Sweats</title>
+    <meta name="description" content="Get in touch with the Sweats team. We're here to help with questions, feedback, or support.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-form-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .contact-form h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--primary-bg);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .faq-section {
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Home
+        </a>
+        
+        <div class="header">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our team. We're here to help with questions, feedback, or support.</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-form-container">
+                <h2>Send us a Message</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="feedback">Product Feedback</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="press">Press Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon">
+                            <ion-icon name="mail"></ion-icon>
+                        </div>
+                        <h3>Email Support</h3>
+                    </div>
+                    <p>For general inquiries and support questions</p>
+                    <a href="mailto:hello@sweatsapp.com" class="contact-link">hello@sweatsapp.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon">
+                            <ion-icon name="help-circle"></ion-icon>
+                        </div>
+                        <h3>Technical Support</h3>
+                    </div>
+                    <p>Need help with the app or technical issues?</p>
+                    <a href="mailto:support@sweatsapp.com" class="contact-link">support@sweatsapp.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon">
+                            <ion-icon name="business"></ion-icon>
+                        </div>
+                        <h3>Business Inquiries</h3>
+                    </div>
+                    <p>Partnerships, collaborations, and business opportunities</p>
+                    <a href="mailto:business@sweatsapp.com" class="contact-link">business@sweatsapp.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <div class="contact-icon">
+                            <ion-icon name="newspaper"></ion-icon>
+                        </div>
+                        <h3>Press & Media</h3>
+                    </div>
+                    <p>Media inquiries and press kit requests</p>
+                    <a href="mailto:press@sweatsapp.com" class="contact-link">press@sweatsapp.com</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How quickly can I expect a response?</div>
+                <div class="faq-answer">We typically respond to all inquiries within 24 hours during business days. For urgent support issues, we aim to respond within 4 hours.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do you offer phone support?</div>
+                <div class="faq-answer">Currently, we provide support primarily through email and our in-app chat system. This allows us to provide thorough, documented assistance for all users.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I request new features?</div>
+                <div class="faq-answer">Absolutely! We love hearing feature requests from our community. Please use the "Product Feedback" option when contacting us, and we'll add your suggestion to our roadmap considerations.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How can I report a bug?</div>
+                <div class="faq-answer">Please use the "Technical Support" option and provide as much detail as possible about the issue, including your device type, app version, and steps to reproduce the bug.</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create mailto link
+            const subject = encodeURIComponent(data.subject + ': ' + data.name);
+            const body = encodeURIComponent(`
+Name: ${data.name}
+Email: ${data.email}
+Subject: ${data.subject}
+
+Message:
+${data.message}
+            `.trim());
+            
+            const mailtoLink = `mailto:hello@sweatsapp.com?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your message! Your email client should open now. If not, please email us directly at hello@sweatsapp.com');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

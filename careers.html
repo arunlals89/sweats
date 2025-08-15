@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Sweats</title>
+    <meta name="description" content="Join the Sweats team and help us build the future of social wellness.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .culture-section {
+            margin-bottom: 6rem;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .culture-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .culture-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .culture-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .culture-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .culture-card p {
+            color: var(--text-secondary);
+        }
+
+        .jobs-section {
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .job-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-department {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .job-type {
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .job-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .job-requirements {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-requirements h4 {
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .job-requirements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-requirements li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .job-requirements ion-icon {
+            color: var(--accent-green);
+        }
+
+        .apply-button {
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--primary-bg);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
+        }
+
+        .no-openings {
+            text-align: center;
+            padding: 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .no-openings h3 {
+            margin-bottom: 1rem;
+        }
+
+        .no-openings p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back to Home
+        </a>
+        
+        <div class="header">
+            <h1>Careers</h1>
+            <p>Join our mission to transform how the world approaches wellness. Build the future with us.</p>
+        </div>
+        
+        <div class="culture-section">
+            <h2 class="section-title">Why Work at Sweats?</h2>
+            <p class="section-subtitle">We're building more than just an app - we're creating a movement.</p>
+            
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <ion-icon name="rocket"></ion-icon>
+                    </div>
+                    <h3>Impact & Purpose</h3>
+                    <p>Your work directly impacts millions of people on their wellness journeys. Every feature you build helps someone live a healthier life.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <h3>Collaborative Culture</h3>
+                    <p>We practice what we preach. Our team is a supportive community where everyone's growth and wellbeing matters.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <ion-icon name="trending-up"></ion-icon>
+                    </div>
+                    <h3>Growth Opportunities</h3>
+                    <p>Join a fast-growing startup where you can wear many hats, learn constantly, and shape the direction of the company.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <ion-icon name="heart"></ion-icon>
+                    </div>
+                    <h3>Work-Life Balance</h3>
+                    <p>We believe in sustainable work practices. Flexible schedules, wellness benefits, and mental health support are part of our DNA.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <ion-icon name="bulb"></ion-icon>
+                    </div>
+                    <h3>Innovation First</h3>
+                    <p>Work with cutting-edge technology in health tech, AI, and social platforms. Your ideas shape our product roadmap.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <ion-icon name="globe"></ion-icon>
+                    </div>
+                    <h3>Remote-First</h3>
+                    <p>Work from anywhere while staying connected. We've built systems and culture that make remote collaboration seamless.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="jobs-section">
+            <h2 class="section-title">Open Positions</h2>
+            <p class="section-subtitle">Ready to make a difference? Explore our current openings.</p>
+            
+            <!-- Example job posting - replace with actual openings -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Senior iOS Developer</div>
+                        <div class="job-department">Engineering</div>
+                    </div>
+                    <div class="job-type">Full-time</div>
+                </div>
+                <div class="job-description">
+                    Help us build the next generation of our iOS app. You'll work on features that directly impact user engagement and wellness outcomes, using SwiftUI, HealthKit, and modern iOS development practices.
+                </div>
+                <div class="job-requirements">
+                    <h4>What we're looking for:</h4>
+                    <ul>
+                        <li><ion-icon name="checkmark"></ion-icon> 5+ years of iOS development experience</li>
+                        <li><ion-icon name="checkmark"></ion-icon> Strong SwiftUI and UIKit skills</li>
+                        <li><ion-icon name="checkmark"></ion-icon> Experience with HealthKit integration</li>
+                        <li><ion-icon name="checkmark"></ion-icon> Passion for health and fitness technology</li>
+                        <li><ion-icon name="checkmark"></ion-icon> Collaborative mindset and strong communication</li>
+                    </ul>
+                </div>
+                <a href="mailto:careers@sweatsapp.com?subject=Senior iOS Developer Application" class="apply-button">Apply Now</a>
+            </div>
+            
+            <!-- More job cards would go here -->
+            
+            <div class="no-openings">
+                <h3>Don't see the right fit?</h3>
+                <p>We're always looking for talented, passionate people to join our team. Send us your resume and let's talk about how you can contribute to our mission.</p>
+                <a href="mailto:careers@sweatsapp.com?subject=General Application" class="apply-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

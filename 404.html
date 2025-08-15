@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Not Found - Sweats</title>
+    <meta name="description" content="The challenge you're looking for could not be found.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-green: #00E676;
+            --accent-blue: #007AFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9E9E9E;
+            --text-tertiary: #666666;
+            --border-color: #3A3A3C;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .error-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+        }
+
+        .error-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .primary-button {
+            background: linear-gradient(135deg, var(--accent-green), #00C853);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            max-width: 300px;
+            justify-content: center;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 230, 118, 0.4);
+        }
+
+        .secondary-button {
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            max-width: 300px;
+            justify-content: center;
+        }
+
+        .secondary-button:hover {
+            border-color: var(--accent-green);
+            background: rgba(0, 230, 118, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .error-card {
+                padding: 2rem;
+            }
+
+            .error-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-card">
+            <div class="error-icon">
+                <ion-icon name="search"></ion-icon>
+            </div>
+            
+            <h1 class="error-title">Challenge Not Found</h1>
+            
+            <p class="error-description">
+                Sorry, the challenge you're looking for doesn't exist or may have expired. 
+                Don't worry though - there are plenty of other amazing challenges waiting for you!
+            </p>
+            
+            <div class="action-buttons">
+                <a href="/" class="primary-button">
+                    <ion-icon name="home"></ion-icon>
+                    Go to Homepage
+                </a>
+                
+                <a href="https://apps.apple.com/app/sweats" class="secondary-button" target="_blank">
+                    <ion-icon name="download"></ion-icon>
+                    Download Sweats App
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

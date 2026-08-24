@@ -134,6 +134,17 @@
     });
   }
 
+  // ---- cheer ticker rotation (live activity mock panel) ----
+  var cheerItems = document.querySelectorAll(".cheer-ticker .cheer-item");
+  if (cheerItems.length > 1 && !reducedMotion) {
+    var cheerIndex = 0;
+    setInterval(function () {
+      cheerItems[cheerIndex].classList.remove("is-active");
+      cheerIndex = (cheerIndex + 1) % cheerItems.length;
+      cheerItems[cheerIndex].classList.add("is-active");
+    }, 2600);
+  }
+
   document.querySelectorAll(".faq-item").forEach(function (item) {
     let q = item.querySelector(".faq-q");
     let a = item.querySelector(".faq-a");

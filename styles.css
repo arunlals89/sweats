@@ -980,6 +980,18 @@ section {
   width: 100%;
 }
 
+/* Graceful fallback when an <img> fails to load twice (see script.js) —
+   keeps the phone-shaped frame instead of showing the browser's broken
+   image glyph. */
+.showcase-phone .frame.frame-failed {
+  aspect-ratio: 220 / 479;
+  background: linear-gradient(160deg, rgba(30, 215, 96, 0.12), rgba(20, 20, 24, 0.5));
+}
+
+.showcase-phone .frame.frame-failed img {
+  display: none;
+}
+
 .showcase-phone figcaption {
   margin-top: 16px;
   font-size: 13.5px;

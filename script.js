@@ -134,6 +134,25 @@
     });
   }
 
+  // ---- showcase screenshot resilience ----
+  // A flaky connection (mobile data, an in-app browser) can fail one of
+  // these <img> loads outright, leaving the browser's raw broken-image
+  // glyph sitting inside an otherwise polished phone frame. Retry once
+  // with a cache-busting query, then fall back to a plain frame instead
+  // of that glyph.
+  document.querySelectorAll(".showcase-phone .frame img").forEach(function (img) {
+    let retried = false;
+    img.addEventListener("error", function () {
+      if (!retried) {
+        retried = true;
+        let src = img.getAttribute("src").split("?")[0];
+        img.src = src + "?retry=" + Date.now();
+        return;
+      }
+      img.closest(".frame").classList.add("frame-failed");
+    });
+  });
+
   document.querySelectorAll(".faq-item").forEach(function (item) {
     let q = item.querySelector(".faq-q");
     let a = item.querySelector(".faq-a");

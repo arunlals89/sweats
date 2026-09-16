@@ -1,3 +1,20 @@
 /privacy   /privacy.html   200
 /terms     /terms.html     200
 /support   /support.html   200
+
+# Deep-link interstitial (see 404.html). GitHub Pages ignores this file and
+# falls back to serving 404.html with a 404 status, which is fine for humans;
+# these rules only take effect if the site moves to Netlify/Cloudflare Pages,
+# where they turn the same page into a real 200.
+/user/*       /404.html   200
+/challenge/*  /404.html   200
+/event/*      /404.html   200
+/community/*  /404.html   200
+/invite/*     /404.html   200
+/post/*       /404.html   200
+/u/*          /404.html   200
+/c/*          /404.html   200
+/e/*          /404.html   200
+/t/*          /404.html   200
+/i/*          /404.html   200
+/p/*          /404.html   200

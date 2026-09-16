@@ -2,6 +2,24 @@
   "rewrites": [
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/support", "destination": "/support.html" }
+    { "source": "/support", "destination": "/support.html" },
+    { "source": "/user/:id", "destination": "/404.html" },
+    { "source": "/challenge/:id", "destination": "/404.html" },
+    { "source": "/event/:id", "destination": "/404.html" },
+    { "source": "/community/:id", "destination": "/404.html" },
+    { "source": "/invite/:id", "destination": "/404.html" },
+    { "source": "/post/:id", "destination": "/404.html" },
+    { "source": "/u/:id", "destination": "/404.html" },
+    { "source": "/c/:id", "destination": "/404.html" },
+    { "source": "/e/:id", "destination": "/404.html" },
+    { "source": "/t/:id", "destination": "/404.html" },
+    { "source": "/i/:id", "destination": "/404.html" },
+    { "source": "/p/:id", "destination": "/404.html" }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+    }
   ]
 }

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Open in Sweats</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#060706" />
+<meta name="apple-itunes-app" content="app-id=6798016318" />
+<link rel="icon" href="/assets/favicon.png" />
+<link rel="apple-touch-icon" href="/assets/icon.png" />
+<!-- Root-absolute: this page is served for arbitrary paths (/user/<id>, ...),
+     so relative asset URLs would resolve against the wrong directory. -->
+<link rel="stylesheet" href="/styles.css" />
+<style>
+  .open-wrap {
+    min-height: 100svh; display: flex; align-items: center; justify-content: center;
+    padding: 32px 20px;
+  }
+  .open-card {
+    width: 100%; max-width: 420px; text-align: center;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 40px 28px;
+    backdrop-filter: blur(12px);
+  }
+  .open-card .mark { width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 22px; display: block; }
+  .open-card h1 { font-size: 26px; line-height: 1.2; margin: 0 0 10px; letter-spacing: -0.02em; }
+  .open-card p { color: var(--text-dim); font-size: 15px; line-height: 1.55; margin: 0 0 26px; }
+  .open-actions { display: flex; flex-direction: column; gap: 12px; }
+  .open-actions .btn { width: 100%; justify-content: center; }
+  .open-foot { margin: 22px 0 0; font-size: 13px; color: var(--text-faint); }
+  .open-foot a { color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<div class="glow-field" aria-hidden="true"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
+<div class="noise" aria-hidden="true"></div>
+
+<main class="open-wrap">
+  <div class="open-card">
+    <img class="mark" src="/assets/icon.png" alt="" />
+    <h1 id="open-title">Page not found</h1>
+    <p id="open-sub">That link doesn’t point anywhere on sweats.in.</p>
+    <div class="open-actions" id="open-actions" hidden>
+      <a class="btn btn-primary" id="open-app" href="#">Open in Sweats</a>
+      <a class="btn btn-ghost" id="open-store"
+         href="https://apps.apple.com/in/app/sweats-social-fitness/id6798016318"
+         target="_blank" rel="noopener">Get the app — it’s free</a>
+    </div>
+    <p class="open-foot"><a href="/">Back to sweats.in</a></p>
+  </div>
+</main>
+
+<script>
+/* Deep-link interstitial.
+ *
+ * Reached in three situations:
+ *   1. Someone on desktop opened a share link.
+ *   2. Someone on mobile without Sweats installed opened one.
+ *   3. An in-app browser (Instagram, Facebook, ...) swallowed the universal
+ *      link instead of handing it to iOS/Android.
+ *
+ * Case 3 is the only one where firing the sweats:// scheme automatically is
+ * a good idea — everywhere else it produces a "cannot open page" error for
+ * the majority of visitors, who don't have the app. So auto-fire is limited
+ * to detected in-app browsers; everyone else gets the button.
+ *
+ * Keep the route table in sync with src/lib/links.ts in the app repo.
+ */
+(function () {
+  var ENTITIES = {
+    user: 'user', challenge: 'challenge', event: 'event',
+    community: 'community', invite: 'invite', post: 'post',
+    // Short aliases, reserved in .well-known/apple-app-site-association.
+    u: 'user', c: 'challenge', e: 'event', t: 'community', i: 'invite', p: 'post'
+  };
+  var LABELS = {
+    user: ['View this profile in Sweats', 'Open the app to see their workouts, streak and tribes.'],
+    challenge: ['Join this challenge in Sweats', 'Open the app to see the goal, the leaderboard and who’s in.'],
+    event: ['See this event in Sweats', 'Open the app for the time, place and who’s going.'],
+    community: ['Join this tribe in Sweats', 'Open the app to see the members and their activity.'],
+    invite: ['You’ve been invited to Sweats', 'Open the app — your friend’s invite code is already attached.'],
+    post: ['See this post in Sweats', 'Open the app to react and join the conversation.']
+  };
+
+  var parts = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+  var entity = ENTITIES[(parts[0] || '').toLowerCase()];
+  var id = parts[1] ? decodeURIComponent(parts[1]) : '';
+  if (!entity || !id) return; // leave the generic 404 copy in place
+
+  var deepLink = 'sweats://' + entity + '/' + encodeURIComponent(id) + window.location.search;
+
+  document.getElementById('open-title').textContent = LABELS[entity][0];
+  document.getElementById('open-sub').textContent = LABELS[entity][1];
+  var actions = document.getElementById('open-actions');
+  actions.hidden = false;
+
+  var openBtn = document.getElementById('open-app');
+  openBtn.href = deepLink;
+
+  var ua = navigator.userAgent || '';
+  var isAndroid = /Android/i.test(ua);
+  var inAppBrowser = /(FBAN|FBAV|Instagram|Line|Twitter|Snapchat|LinkedInApp|Pinterest)/i.test(ua);
+
+  if (isAndroid) {
+    // Android intent: URL falls through to the Play Store listing when the app
+    // isn't installed, instead of dead-ending on an unhandled scheme.
+    openBtn.href = 'intent://' + entity + '/' + encodeURIComponent(id) +
+      '#Intent;scheme=sweats;package=in.sweats.sweats;S.browser_fallback_url=' +
+      encodeURIComponent('https://play.google.com/store/apps/details?id=in.sweats.sweats') + ';end';
+  }
+
+  if (inAppBrowser) {
+    setTimeout(function () { window.location.href = openBtn.href; }, 250);
+  }
+})();
+</script>
+
+</body>
+</html>

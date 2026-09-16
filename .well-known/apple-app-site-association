@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["56H9Y8YVJ6.in.sweats.sweats"],
+        "components": [
+          { "/": "/user/*", "comment": "Profile" },
+          { "/": "/challenge/*", "comment": "Challenge detail" },
+          { "/": "/event/*", "comment": "Event detail" },
+          { "/": "/community/*", "comment": "Tribe detail" },
+          { "/": "/invite/*", "comment": "Referral invite code" },
+          { "/": "/post/*", "comment": "Post permalink" },
+          { "/": "/u/*", "comment": "Reserved short alias for /user" },
+          { "/": "/c/*", "comment": "Reserved short alias for /challenge" },
+          { "/": "/e/*", "comment": "Reserved short alias for /event" },
+          { "/": "/t/*", "comment": "Reserved short alias for /community (tribe)" },
+          { "/": "/i/*", "comment": "Reserved short alias for /invite" },
+          { "/": "/p/*", "comment": "Reserved short alias for /post" }
+        ]
+      }
+    ]
+  }
+}

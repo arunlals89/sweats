@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "in.sweats.sweats",
+      "sha256_cert_fingerprints": [
+        "FE:F8:18:87:1C:1A:72:34:B9:AF:3B:6A:51:72:E4:DD:E4:CF:FC:C8:5F:FB:B8:DF:6F:96:AA:78:61:D9:D0:34"
+      ]
+    }
+  }
+]

@@ -807,6 +807,9 @@ h1, h2, h3, h4 {
 .feature-grid .feature-card:nth-child(7) { transition-delay: 0ms; }
 .feature-grid .feature-card:nth-child(8) { transition-delay: 60ms; }
 .feature-grid .feature-card:nth-child(9) { transition-delay: 120ms; }
+.feature-grid .feature-card:nth-child(10) { transition-delay: 0ms; }
+.feature-grid .feature-card:nth-child(11) { transition-delay: 60ms; }
+.feature-grid .feature-card:nth-child(12) { transition-delay: 120ms; }
 
 .steps .step:nth-child(1) { transition-delay: 0ms; }
 .steps .step:nth-child(2) { transition-delay: 90ms; }
@@ -1878,4 +1881,301 @@ footer {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* ==========================================================================
+   Added: trust strip, duels, leagues, "your people" grid, plans, referral
+   ========================================================================== */
+
+/* ---- hero trust strip ---- */
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+.trust-item svg { color: var(--brand); flex-shrink: 0; }
+
+/* ---- duel panel ---- */
+.duel-panel .duel-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.duel-face { text-align: center; }
+.duel-face .avatar,
+.watchers .watcher-avatar.is-plain {
+  margin: 0 auto;
+}
+.duel-face .face {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-strong);
+  margin: 0 auto 8px;
+}
+.duel-face.is-you .face {
+  background: rgba(23, 209, 88, 0.16);
+  border-color: rgba(23, 209, 88, 0.45);
+  color: var(--accent);
+}
+.duel-face .nm { font-size: 13px; font-weight: 600; }
+.duel-vs {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+.duel-goal {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-faint);
+  margin-bottom: 18px;
+}
+.duel-bar {
+  margin-bottom: 14px;
+}
+.duel-bar .lbl {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  margin-bottom: 7px;
+}
+.duel-bar .lbl b { color: var(--text); font-weight: 600; }
+.duel-bar .track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+.duel-bar .fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+}
+.duel-bar.is-you .fill {
+  background: linear-gradient(90deg, var(--brand-strong), var(--brand));
+  box-shadow: 0 0 18px var(--brand-glow);
+}
+.duel-footer {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--text-faint);
+}
+.duel-footer .hot { color: var(--brand); font-weight: 600; }
+
+/* ---- league ladder ---- */
+.ladder { display: flex; flex-direction: column; gap: 8px; }
+.ladder-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.025);
+}
+.ladder-row .tier {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.ladder-row .tn { font-size: 14px; font-weight: 600; flex: 1; }
+.ladder-row .tm { font-size: 12px; color: var(--text-faint); }
+.ladder-row.is-current {
+  border-color: rgba(23, 209, 88, 0.4);
+  background: rgba(23, 209, 88, 0.08);
+  box-shadow: 0 0 28px -12px var(--brand-glow);
+}
+.ladder-row.is-current .tm { color: var(--accent); }
+.tier-bronze { background: linear-gradient(140deg, #8c5a2b, #c88b4a); }
+.tier-silver { background: linear-gradient(140deg, #767b86, #c2c8d4); }
+.tier-gold { background: linear-gradient(140deg, #a9801f, #f2c94c); }
+.tier-plat { background: linear-gradient(140deg, #2f7d6a, #7ee8c8); }
+.tier-diamond { background: linear-gradient(140deg, #2f5fa8, #8fd0ff); }
+.ladder-note {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+/* ---- "your people" mini grid ---- */
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.mini-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  transition: transform 0.35s var(--ease), background 0.35s, border-color 0.35s;
+}
+.mini-card:hover {
+  transform: translateY(-4px);
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+}
+.mini-card .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 12px;
+}
+.mini-card h3 { font-size: 19px; margin-bottom: 9px; }
+.mini-card p { font-size: 14px; color: var(--text-dim); }
+
+/* ---- plans ---- */
+.plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.plan {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+}
+.plan--pro {
+  position: relative;
+  background: linear-gradient(165deg, rgba(23, 209, 88, 0.1), rgba(255, 255, 255, 0.03));
+  border-color: rgba(23, 209, 88, 0.35);
+  box-shadow: 0 30px 70px -40px var(--brand-glow);
+}
+.plan-name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.plan--pro .plan-name { color: var(--brand); }
+.plan-price {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.plan-sub { font-size: 13.5px; color: var(--text-faint); margin-bottom: 22px; }
+.plan-list { display: flex; flex-direction: column; gap: 12px; }
+.plan-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.plan-list li .check {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-dim);
+}
+.plan--pro .plan-list li .check {
+  background: rgba(23, 209, 88, 0.15);
+  color: var(--brand);
+}
+.plan-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #051a0c;
+  background: var(--brand);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+/* ---- referral hook in the CTA ---- */
+.referral-hook {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(23, 209, 88, 0.3);
+  background: rgba(23, 209, 88, 0.08);
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+.referral-hook b { color: var(--text); font-weight: 600; }
+
+@media (max-width: 980px) {
+  .mini-grid { grid-template-columns: repeat(2, 1fr); }
+  .plans { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .mini-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .trust-strip { gap: 8px; }
+  .trust-item { font-size: 11.5px; padding: 6px 11px; }
+  .duel-head { gap: 12px; }
+  .duel-face .face { width: 46px; height: 46px; font-size: 13px; }
+  .plan { padding: 26px 22px; }
+  .ladder-row .tm { font-size: 11px; text-align: right; max-width: 45%; }
+  .ladder-row { padding: 11px 12px; gap: 10px; }
 }

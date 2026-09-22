@@ -1931,6 +1931,11 @@ footer {
 
 .blog-cta .btn {
   display: inline-flex;
+  text-decoration: none;
+}
+
+.blog-cta .btn-primary {
+  color: #04140a;
 }
 
 /* ---------- responsive ---------- */

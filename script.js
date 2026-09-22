@@ -6,6 +6,20 @@
 
   let nav = document.querySelector(".nav");
   let progressBar = document.querySelector(".scroll-progress span");
+
+  // Cache the scrollable height instead of reading it on every scroll tick —
+  // querying scrollHeight right after a classList mutation forces a
+  // synchronous layout (a "forced reflow"). Recompute only when the page's
+  // height can actually change: on resize, and once more after everything
+  // (including lazy-loaded images) has finished loading.
+  let scrollMax = 0;
+  let updateScrollMax = function () {
+    scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+  };
+  updateScrollMax();
+  window.addEventListener("resize", updateScrollMax, { passive: true });
+  window.addEventListener("load", updateScrollMax);
+
   let onScroll = function () {
     if (window.scrollY > 8) {
       nav.classList.add("is-scrolled");
@@ -13,8 +27,7 @@
       nav.classList.remove("is-scrolled");
     }
     if (progressBar) {
-      let max = document.documentElement.scrollHeight - window.innerHeight;
-      let pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      let pct = scrollMax > 0 ? (window.scrollY / scrollMax) * 100 : 0;
       progressBar.style.width = pct + "%";
     }
   };

@@ -1,6 +1,8 @@
-/privacy   /privacy.html   200
-/terms     /terms.html     200
-/support   /support.html   200
+/privacy         /privacy.html         200
+/terms           /terms.html           200
+/support         /support.html         200
+/delete-account  /delete-account.html  200
+/delete-data     /delete-data.html     200
 
 # Deep-link interstitial (see 404.html). GitHub Pages ignores this file and
 # falls back to serving 404.html with a 404 status, which is fine for humans;

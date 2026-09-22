@@ -3,6 +3,8 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/support", "destination": "/support.html" },
+    { "source": "/delete-account", "destination": "/delete-account.html" },
+    { "source": "/delete-data", "destination": "/delete-data.html" },
     { "source": "/blog/why-training-alone-doesnt-work", "destination": "/blog/why-training-alone-doesnt-work.html" },
     { "source": "/blog/the-case-for-fitness-duels", "destination": "/blog/the-case-for-fitness-duels.html" },
     { "source": "/blog/what-to-look-for-in-a-social-fitness-app", "destination": "/blog/what-to-look-for-in-a-social-fitness-app.html" },

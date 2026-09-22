@@ -1012,6 +1012,7 @@ section {
 .showcase-phone:nth-child(3) { transition-delay: 120ms; }
 .showcase-phone:nth-child(4) { transition-delay: 180ms; }
 .showcase-phone:nth-child(5) { transition-delay: 240ms; }
+.showcase-phone:nth-child(6) { transition-delay: 300ms; }
 
 /* ---------- spotlight (AI coach / challenges) ---------- */
 
@@ -1936,6 +1937,21 @@ footer {
 
 .blog-cta .btn-primary {
   color: #04140a;
+}
+
+.legal-page .post-image {
+  width: 240px;
+  max-width: 60%;
+  margin: 8px auto 32px;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.legal-page .post-image img {
+  display: block;
+  width: 100%;
 }
 
 /* ---------- responsive ---------- */

@@ -3,6 +3,7 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/support", "destination": "/support.html" },
+    { "source": "/about", "destination": "/about.html" },
     { "source": "/delete-account", "destination": "/delete-account.html" },
     { "source": "/delete-data", "destination": "/delete-data.html" },
     { "source": "/blog/why-training-alone-doesnt-work", "destination": "/blog/why-training-alone-doesnt-work.html" },

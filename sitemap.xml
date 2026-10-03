@@ -13,6 +13,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://sweats.in/invest</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://sweats.in/stories/</loc>
     <lastmod>2026-09-27</lastmod>
     <changefreq>weekly</changefreq>

@@ -2645,6 +2645,29 @@ footer {
 .gem-kind strong { font-family: 'Gilroy', sans-serif; font-size: 14px; font-weight: 700; }
 .gem-kind span { font-size: 11.5px; color: var(--text-faint); }
 
+/* "Hide a gem, leave a note": the found-note card, as the app shows it. */
+.gem-hide { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border); }
+.gem-hide .new-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: #060706; background: var(--brand); border-radius: 999px; padding: 3px 9px; margin-bottom: 10px;
+}
+.gem-hide h3 { font-family: 'Gilroy', sans-serif; font-size: 22px; line-height: 1.25; margin: 0 0 8px; }
+.gem-hide p { color: var(--text-dim); margin: 0; }
+.gem-note-card {
+  display: flex; gap: 12px; align-items: flex-start; max-width: 380px; margin: 18px 0 4px;
+  padding: 14px 16px; border-radius: 16px;
+  background: rgba(12, 12, 14, 0.92); border: 1px solid rgba(59, 130, 246, 0.6);
+}
+.gem-note-card img { flex: none; margin-top: 2px; }
+.gem-note-card small {
+  display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #93c5fd;
+}
+.gem-note-card q { display: block; margin-top: 5px; font-weight: 600; color: #fff; line-height: 1.45; quotes: "“" "”"; }
+.gem-note-quote {
+  margin: 22px 0; padding: 14px 18px; border-left: 3px solid var(--brand); border-radius: 0 12px 12px 0;
+  background: rgba(255, 255, 255, 0.03); font-size: 19px; font-weight: 600; color: var(--text);
+}
+
 /* The /sweat-gems page's gem row. */
 .post-gems { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
 

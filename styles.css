@@ -991,6 +991,12 @@ section {
   display: none;
 }
 
+/* Fades the last card so the row reads as scrollable. */
+.showcase-scroller {
+  -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, #000 88%, transparent);
+}
+
 .showcase-track {
   display: flex;
   gap: 24px;
@@ -1046,6 +1052,7 @@ section {
 .showcase-phone:nth-child(4) { transition-delay: 180ms; }
 .showcase-phone:nth-child(5) { transition-delay: 240ms; }
 .showcase-phone:nth-child(6) { transition-delay: 300ms; }
+.showcase-phone:nth-child(7) { transition-delay: 360ms; }
 
 /* ---------- spotlight (AI coach / challenges) ---------- */
 

@@ -65,7 +65,8 @@
   --radius-sm: 12px;
   --max: 1180px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --section-y: clamp(56px, 7vw, 80px);
+  --section-y: clamp(36px, 4.5vw, 56px);
+  --section-gap: calc(var(--section-y) * 2);
   --gutter: clamp(18px, 4vw, 24px);
 }
 
@@ -580,7 +581,7 @@ p {
 
 .hero {
   position: relative;
-  padding: clamp(116px, 14vw, 168px) 0 clamp(56px, 8vw, 104px);
+  padding: clamp(112px, 13vw, 160px) 0 var(--section-y);
   z-index: 1;
 }
 
@@ -594,6 +595,7 @@ p {
 }
 
 .hero h1 {
+  text-wrap: wrap;
   font-size: clamp(40px, 5.6vw, 68px);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -723,7 +725,7 @@ p {
 .sport-strip {
   position: relative;
   z-index: 1;
-  padding: 0 0 clamp(8px, 2vw, 24px);
+  padding: 0 0 var(--section-y);
 }
 
 .sport-strip .sr-label {
@@ -857,7 +859,7 @@ section {
 
 .section-head {
   max-width: 680px;
-  margin-bottom: clamp(36px, 5vw, 52px);
+  margin-bottom: clamp(32px, 4vw, 48px);
 }
 
 .section-head h2 {
@@ -869,6 +871,10 @@ section {
   color: var(--text-dim);
   font-size: 16.5px;
   margin-top: 14px;
+}
+
+.section-head.center {
+  max-width: 780px;
 }
 
 .section-head.center p {
@@ -1064,7 +1070,7 @@ section {
 }
 
 .spotlight + .spotlight:not(.ai-panel) {
-  margin-top: clamp(56px, 7vw, 88px);
+  margin-top: var(--section-gap);
 }
 
 /* Side by side, the illustration rides along while the longer copy column scrolls. */
@@ -2559,6 +2565,8 @@ footer {
 
 /* Homepage teaser band */
 .inv-teaser {
+  padding: clamp(48px, 6vw, 72px) 0;
+  margin-top: var(--section-y);
   background:
     radial-gradient(120% 140% at 85% -10%, rgba(23,209,88,0.10), transparent 60%),
     var(--bg-elevated);

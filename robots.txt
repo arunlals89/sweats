@@ -1,4 +1,20 @@
+# sweats.in
+# Everything public is crawlable. The paths below are app deep links
+# (sweats.in/user/<id>, /post/<id>, ...): they open in the Sweats app, and in a
+# browser they only show an "Open in Sweats" page, so they have nothing to index.
+
 User-agent: *
-Allow: /
+Disallow: /user/
+Disallow: /challenge/
+Disallow: /event/
+Disallow: /community/
+Disallow: /invite/
+Disallow: /post/
+Disallow: /u/
+Disallow: /c/
+Disallow: /e/
+Disallow: /t/
+Disallow: /i/
+Disallow: /p/
 
 Sitemap: https://sweats.in/sitemap.xml

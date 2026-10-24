@@ -172,21 +172,6 @@
     });
   });
 
-  // ---- one-tap download ----
-  // On iPhone/iPad the "Get the app" buttons go straight to the App Store
-  // instead of scrolling to the download band; elsewhere they keep the band,
-  // which also carries the Android beta APK.
-  let APP_STORE = "https://apps.apple.com/in/app/sweats-social-fitness/id6798016318";
-  let isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  if (isIOS) {
-    document.querySelectorAll("[data-get-app]").forEach(function (a) {
-      a.href = APP_STORE;
-      a.target = "_blank";
-      a.rel = "noopener";
-    });
-  }
-
   // ---- sticky download bar (phones) ----
   // Appears once the hero's own CTA has scrolled away; steps aside while the
   // download band or the footer is on screen so it never doubles up.

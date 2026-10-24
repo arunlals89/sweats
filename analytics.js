@@ -11,10 +11,16 @@
   gtag("js", new Date());
   gtag("config", GA_MEASUREMENT_ID, { anonymize_ip: true });
 
-  var s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
-  document.head.appendChild(s);
+  /* gtag.js is ~150 KB of script. Calls above queue in dataLayer, so it can
+     load after the page has finished rendering without losing the pageview. */
+  var loadGtag = function () {
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
+    document.head.appendChild(s);
+  };
+  if (document.readyState === "complete") loadGtag();
+  else window.addEventListener("load", loadGtag, { once: true });
 
   /* Outbound clicks — App Store / Play Store taps are the conversion that matters here. */
   document.addEventListener("click", function (e) {

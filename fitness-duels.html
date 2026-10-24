@@ -3,8 +3,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://www.google-analytics.com">
 <title>1v1 Fitness Challenges With Friends — Sweats Duels</title>
 <link rel="canonical" href="https://sweats.in/fitness-duels" />
 <meta name="description" content="Turn any friend’s run, ride or walk into a private 1-on-1 race. Sweats picks a fair metric, tracks it automatically and tells you when the lead changes." />
@@ -25,8 +23,11 @@
 <meta name="twitter:image" content="https://sweats.in/assets/og-image.png" />
 
 <link rel="icon" href="./assets/favicon.png?v=2" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preload" href="/assets/fonts/Gilroy-Bold.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/Gilroy-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="./styles.css" />
-<script src="./analytics.js" async></script>
+<script src="./analytics.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -138,7 +139,7 @@
   </div>
 
   <div class="post-image">
-    <picture><source srcset="./assets/screens/challenge.webp" type="image/webp"><img src="./assets/screens/challenge.jpg" alt="Sweats challenge screen showing a live head-to-head leaderboard between friends" loading="lazy" /></picture>
+    <picture><source type="image/webp" srcset="./assets/screens/challenge-440.webp 440w, ./assets/screens/challenge.webp 720w" sizes="240px"><img src="./assets/screens/challenge.jpg" alt="Sweats challenge screen showing a live head-to-head leaderboard between friends" width="240" height="522" loading="lazy" decoding="async" /></picture>
   </div>
 
   <h2>How a fitness duel works</h2>

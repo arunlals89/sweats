@@ -3,8 +3,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://www.google-analytics.com">
 <title>About — Sweats</title>
 <link rel="canonical" href="https://sweats.in/about" />
 <meta name="description" content="Sweats is the social fitness app for people who train together. Meet the team building it from Kochi, India." />
@@ -14,8 +12,11 @@
 <meta property="og:description" content="Meet the team building the social fitness app for people who train together." />
 <meta property="og:image" content="https://sweats.in/assets/og-image.png" />
 <link rel="icon" href="./assets/favicon.png?v=2" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preload" href="/assets/fonts/Gilroy-Bold.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/Gilroy-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="./styles.css" />
-<script src="./analytics.js" async></script>
+<script src="./analytics.js" defer></script>
 </head>
 <body>
 
@@ -53,7 +54,7 @@
   <h2>The people behind Sweats</h2>
   <div class="team-grid">
     <article class="team-card">
-      <img src="./assets/team/arunlal.png" alt="Arunlal, Founder, CEO and CTO of Sweats" width="400" height="533" loading="lazy" />
+      <picture><source srcset="./assets/team/arunlal.webp" type="image/webp"><img src="./assets/team/arunlal.jpg" alt="Arunlal, Founder, CEO and CTO of Sweats" width="400" height="533" loading="lazy" decoding="async" /></picture>
       <div class="team-body">
         <h3>Arunlal</h3>
         <p class="team-role">Founder, CEO &amp; CTO</p>
@@ -61,7 +62,7 @@
       </div>
     </article>
     <article class="team-card">
-      <img src="./assets/team/vidya-venunath.jpg" alt="Dr. Vidya Venunath, Growth Lead at Sweats" width="400" height="533" loading="lazy" />
+      <picture><source srcset="./assets/team/vidya-venunath.webp" type="image/webp"><img src="./assets/team/vidya-venunath.jpg" alt="Dr. Vidya Venunath, Growth Lead at Sweats" width="400" height="533" loading="lazy" decoding="async" /></picture>
       <div class="team-body">
         <h3>Dr. Vidya Venunath</h3>
         <p class="team-role">Growth Lead</p>

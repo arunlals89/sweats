@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://www.google-analytics.com">
 <title>Open in Sweats</title>
 <meta name="robots" content="noindex" />
 <meta name="theme-color" content="#060706" />
 <meta name="apple-itunes-app" content="app-id=6798016318" />
 <link rel="icon" href="/assets/favicon.png?v=2" />
-<link rel="apple-touch-icon" href="/assets/icon.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 <!-- Root-absolute: this page is served for arbitrary paths (/user/<id>, ...),
      so relative asset URLs would resolve against the wrong directory. -->
+<link rel="preload" href="/assets/fonts/Gilroy-Bold.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/Gilroy-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/styles.css" />
 <style>
   .open-wrap {
@@ -33,7 +33,7 @@
   .open-foot { margin: 22px 0 0; font-size: 13px; color: var(--text-faint); }
   .open-foot a { color: var(--text-dim); }
 </style>
-<script src="/analytics.js" async></script>
+<script src="/analytics.js" defer></script>
 </head>
 <body>
 

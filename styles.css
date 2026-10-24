@@ -2565,3 +2565,101 @@ footer {
 @media (max-width: 520px) {
   .inv-row { grid-template-columns: 1fr; }
 }
+
+/* ---------- Sweat Gems ---------- */
+
+.gem-panel { display: flex; flex-direction: column; gap: 18px; }
+
+.gem-map {
+  position: relative;
+  height: 230px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #161a1f, #0f1215);
+  border: 1px solid var(--border);
+}
+.gem-map-streets { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gem-route { stroke-dasharray: 520; stroke-dashoffset: 520; }
+/* Draws itself when the section scrolls in (script.js adds .is-visible). */
+.reveal.is-visible .gem-route { animation: gem-route-draw 2.4s var(--ease) 0.3s forwards; }
+@keyframes gem-route-draw { to { stroke-dashoffset: 0; } }
+
+.gem-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  animation: gem-bob 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+.gp-1 { left: 22%; top: 72%; animation-delay: -0.4s; }
+.gp-2 { left: 38%; top: 52%; animation-delay: -1.2s; }
+.gp-3 { left: 66%; top: 40%; animation-delay: -2s; }
+.gp-4 { left: 85%; top: 30%; animation-delay: -0.8s; }
+@keyframes gem-bob {
+  0%, 100% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 5px)); }
+}
+.gem-pin.is-found { animation: gem-found 2.6s ease-in-out infinite; }
+@keyframes gem-found {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  45% { transform: translate(-50%, -50%) scale(1.18); }
+}
+
+/* You, partway along the route. */
+.gem-you {
+  position: absolute; left: 33%; top: 57%;
+  width: 16px; height: 16px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff; border: 3px solid var(--brand);
+}
+
+.gem-toast {
+  position: absolute; left: 50%; bottom: 14px;
+  transform: translateX(-50%);
+  /* Absolutely placed at left: 50%, it would only get half the map's width
+     to lay out in — max-content keeps the "+5" inside the pill. */
+  width: max-content;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 14px 7px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 13px; font-weight: 600; color: #fff;
+  background: rgba(12, 12, 14, 0.9);
+  border: 1px solid rgba(164, 92, 240, 0.55);
+  opacity: 0;
+}
+.reveal.is-visible .gem-toast { animation: gem-toast-in 0.6s var(--ease) 1.4s both; }
+.gem-toast b { color: #d8b9ff; font-weight: 700; }
+@keyframes gem-toast-in {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.gem-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.gem-kind {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 12px 8px; border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+  text-align: center;
+}
+.gem-kind img { margin-bottom: 2px; }
+.gem-kind strong { font-family: 'Gilroy', sans-serif; font-size: 14px; font-weight: 700; }
+.gem-kind span { font-size: 11.5px; color: var(--text-faint); }
+
+/* The /sweat-gems page's gem row. */
+.post-gems { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+
+@media (max-width: 480px) {
+  .gem-map { height: 200px; }
+  .gem-toast { font-size: 12px; }
+  .gem-trio, .post-gems { gap: 8px; }
+  .gem-kind { padding: 10px 4px; }
+  .gem-kind img { width: 38px; height: 38px; }
+  .gem-kind strong { font-size: 12.5px; white-space: nowrap; }
+  .gem-kind span { font-size: 11px; white-space: nowrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gem-pin, .gem-pin.is-found, .reveal.is-visible .gem-toast { animation: none !important; }
+  .gem-toast { opacity: 1; }
+  .gem-route, .reveal.is-visible .gem-route { animation: none !important; stroke-dashoffset: 0; }
+}

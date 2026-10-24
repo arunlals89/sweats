@@ -172,21 +172,53 @@
     });
   });
 
-  // ---- AI showcase tabs ----
-  let aiTabs = document.querySelectorAll(".ai-tab");
-  let aiPanels = document.querySelectorAll(".ai-panel");
-  aiTabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      let target = tab.getAttribute("data-tab");
-      aiTabs.forEach(function (t) {
-        t.classList.toggle("is-active", t === tab);
-        t.setAttribute("aria-selected", t === tab ? "true" : "false");
-      });
-      aiPanels.forEach(function (panel) {
-        panel.classList.toggle("is-active", panel.getAttribute("data-panel") === target);
-      });
+  // ---- one-tap download ----
+  // On iPhone/iPad the "Get the app" buttons go straight to the App Store
+  // instead of scrolling to the download band; elsewhere they keep the band,
+  // which also carries the Android beta APK.
+  let APP_STORE = "https://apps.apple.com/in/app/sweats-social-fitness/id6798016318";
+  let isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    document.querySelectorAll("[data-get-app]").forEach(function (a) {
+      a.href = APP_STORE;
+      a.target = "_blank";
+      a.rel = "noopener";
     });
-  });
+  }
+
+  // ---- sticky download bar (phones) ----
+  // Appears once the hero's own CTA has scrolled away; steps aside while the
+  // download band or the footer is on screen so it never doubles up.
+  let stickyCta = document.querySelector(".sticky-cta");
+  let hero = document.querySelector(".hero");
+  if (stickyCta && hero && "IntersectionObserver" in window) {
+    let pastHero = false;
+    let blockers = 0;
+    let stickyLink = stickyCta.querySelector("a");
+    let render = function () {
+      let show = pastHero && blockers === 0;
+      stickyCta.classList.toggle("is-shown", show);
+      stickyCta.setAttribute("aria-hidden", show ? "false" : "true");
+      if (stickyLink) stickyLink.tabIndex = show ? 0 : -1;
+    };
+    new IntersectionObserver(function (entries) {
+      pastHero = !entries[0].isIntersecting;
+      render();
+    }).observe(hero);
+    let seen = new Set();
+    let blockIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target);
+      });
+      blockers = seen.size;
+      render();
+    });
+    ["#download", "footer"].forEach(function (sel) {
+      let el = document.querySelector(sel);
+      if (el) blockIo.observe(el);
+    });
+  }
 
   document.querySelectorAll(".faq-item").forEach(function (item) {
     let q = item.querySelector(".faq-q");

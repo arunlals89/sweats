@@ -1,60 +1,209 @@
 {
   "rewrites": [
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/support", "destination": "/support.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/invest", "destination": "/invest.html" },
-    { "source": "/delete-account", "destination": "/delete-account.html" },
-    { "source": "/delete-data", "destination": "/delete-data.html" },
-    { "source": "/stories/why-training-alone-doesnt-work", "destination": "/stories/why-training-alone-doesnt-work.html" },
-    { "source": "/stories/the-case-for-fitness-duels", "destination": "/stories/the-case-for-fitness-duels.html" },
-    { "source": "/stories/what-to-look-for-in-a-social-fitness-app", "destination": "/stories/what-to-look-for-in-a-social-fitness-app.html" },
-    { "source": "/stories/how-fitness-leagues-work", "destination": "/stories/how-fitness-leagues-work.html" },
-    { "source": "/stories/the-psychology-of-going-live", "destination": "/stories/the-psychology-of-going-live.html" },
-    { "source": "/stories/what-an-ai-fitness-coach-should-do", "destination": "/stories/what-an-ai-fitness-coach-should-do.html" },
-    { "source": "/stories/why-group-fitness-challenges-fail", "destination": "/stories/why-group-fitness-challenges-fail.html" },
-    { "source": "/stories/streak-freezes-explained", "destination": "/stories/streak-freezes-explained.html" },
-    { "source": "/fitness-duels", "destination": "/fitness-duels.html" },
-    { "source": "/sweat-gems", "destination": "/sweat-gems.html" },
-    { "source": "/ai-fitness-coach", "destination": "/ai-fitness-coach.html" },
-    { "source": "/stories/how-to-stay-consistent-with-working-out", "destination": "/stories/how-to-stay-consistent-with-working-out.html" },
-    { "source": "/stories/30-day-step-challenge", "destination": "/stories/30-day-step-challenge.html" },
-    { "source": "/stories/workout-accountability-partner", "destination": "/stories/workout-accountability-partner.html" },
-    { "source": "/stories/workplace-fitness-challenge-ideas", "destination": "/stories/workplace-fitness-challenge-ideas.html" },
-    { "source": "/stories/apple-watch-competition-with-multiple-friends", "destination": "/stories/apple-watch-competition-with-multiple-friends.html" },
-    { "source": "/stories/strava-group-challenges-without-subscription", "destination": "/stories/strava-group-challenges-without-subscription.html" },
-    { "source": "/stories/couples-fitness-challenge", "destination": "/stories/couples-fitness-challenge.html" },
-    { "source": "/stories/fitness-challenge-ideas-for-friends", "destination": "/stories/fitness-challenge-ideas-for-friends.html" },
-    { "source": "/stories/how-to-start-a-run-club-in-india", "destination": "/stories/how-to-start-a-run-club-in-india.html" },
-    { "source": "/stories/first-run-club-what-to-expect", "destination": "/stories/first-run-club-what-to-expect.html" },
-    { "source": "/stories/running-in-delhi-pollution", "destination": "/stories/running-in-delhi-pollution.html" },
-    { "source": "/stories/weight-loss-challenge-with-friends", "destination": "/stories/weight-loss-challenge-with-friends.html" },
-    { "source": "/user/:id", "destination": "/404.html" },
-    { "source": "/challenge/:id", "destination": "/404.html" },
-    { "source": "/event/:id", "destination": "/404.html" },
-    { "source": "/community/:id", "destination": "/404.html" },
-    { "source": "/invite/:id", "destination": "/404.html" },
-    { "source": "/post/:id", "destination": "/404.html" },
-    { "source": "/u/:id", "destination": "/404.html" },
-    { "source": "/c/:id", "destination": "/404.html" },
-    { "source": "/e/:id", "destination": "/404.html" },
-    { "source": "/t/:id", "destination": "/404.html" },
-    { "source": "/i/:id", "destination": "/404.html" },
-    { "source": "/p/:id", "destination": "/404.html" }
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/support",
+      "destination": "/support.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/invest",
+      "destination": "/invest.html"
+    },
+    {
+      "source": "/delete-account",
+      "destination": "/delete-account.html"
+    },
+    {
+      "source": "/delete-data",
+      "destination": "/delete-data.html"
+    },
+    {
+      "source": "/tribes",
+      "destination": "/tribes.html"
+    },
+    {
+      "source": "/challenges",
+      "destination": "/challenges.html"
+    },
+    {
+      "source": "/stories/why-training-alone-doesnt-work",
+      "destination": "/stories/why-training-alone-doesnt-work.html"
+    },
+    {
+      "source": "/stories/the-case-for-fitness-duels",
+      "destination": "/stories/the-case-for-fitness-duels.html"
+    },
+    {
+      "source": "/stories/what-to-look-for-in-a-social-fitness-app",
+      "destination": "/stories/what-to-look-for-in-a-social-fitness-app.html"
+    },
+    {
+      "source": "/stories/how-fitness-leagues-work",
+      "destination": "/stories/how-fitness-leagues-work.html"
+    },
+    {
+      "source": "/stories/the-psychology-of-going-live",
+      "destination": "/stories/the-psychology-of-going-live.html"
+    },
+    {
+      "source": "/stories/what-an-ai-fitness-coach-should-do",
+      "destination": "/stories/what-an-ai-fitness-coach-should-do.html"
+    },
+    {
+      "source": "/stories/why-group-fitness-challenges-fail",
+      "destination": "/stories/why-group-fitness-challenges-fail.html"
+    },
+    {
+      "source": "/stories/streak-freezes-explained",
+      "destination": "/stories/streak-freezes-explained.html"
+    },
+    {
+      "source": "/fitness-duels",
+      "destination": "/fitness-duels.html"
+    },
+    {
+      "source": "/sweat-gems",
+      "destination": "/sweat-gems.html"
+    },
+    {
+      "source": "/ai-fitness-coach",
+      "destination": "/ai-fitness-coach.html"
+    },
+    {
+      "source": "/stories/how-to-stay-consistent-with-working-out",
+      "destination": "/stories/how-to-stay-consistent-with-working-out.html"
+    },
+    {
+      "source": "/stories/30-day-step-challenge",
+      "destination": "/stories/30-day-step-challenge.html"
+    },
+    {
+      "source": "/stories/workout-accountability-partner",
+      "destination": "/stories/workout-accountability-partner.html"
+    },
+    {
+      "source": "/stories/workplace-fitness-challenge-ideas",
+      "destination": "/stories/workplace-fitness-challenge-ideas.html"
+    },
+    {
+      "source": "/stories/apple-watch-competition-with-multiple-friends",
+      "destination": "/stories/apple-watch-competition-with-multiple-friends.html"
+    },
+    {
+      "source": "/stories/strava-group-challenges-without-subscription",
+      "destination": "/stories/strava-group-challenges-without-subscription.html"
+    },
+    {
+      "source": "/stories/couples-fitness-challenge",
+      "destination": "/stories/couples-fitness-challenge.html"
+    },
+    {
+      "source": "/stories/fitness-challenge-ideas-for-friends",
+      "destination": "/stories/fitness-challenge-ideas-for-friends.html"
+    },
+    {
+      "source": "/stories/how-to-start-a-run-club-in-india",
+      "destination": "/stories/how-to-start-a-run-club-in-india.html"
+    },
+    {
+      "source": "/stories/first-run-club-what-to-expect",
+      "destination": "/stories/first-run-club-what-to-expect.html"
+    },
+    {
+      "source": "/stories/running-in-delhi-pollution",
+      "destination": "/stories/running-in-delhi-pollution.html"
+    },
+    {
+      "source": "/stories/weight-loss-challenge-with-friends",
+      "destination": "/stories/weight-loss-challenge-with-friends.html"
+    },
+    {
+      "source": "/user/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/challenge/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/event/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/community/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/invite/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/post/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/u/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/c/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/e/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/t/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/i/:id",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/p/:id",
+      "destination": "/404.html"
+    }
   ],
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
-      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
     },
     {
       "source": "/assets/fonts/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     }
   ]
 }

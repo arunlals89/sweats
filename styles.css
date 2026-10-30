@@ -2414,3 +2414,11 @@ footer {
   .gem-kind span { font-size: 11px; white-space: nowrap; }
 }
 
+
+/* ---- Android beta how-to under the CTA store badges ---- */
+.cta-band .store-note {
+  margin: 14px auto 0;
+  font-size: 13px;
+  max-width: 420px;
+}
+.store-note b { color: var(--text); font-weight: 600; }

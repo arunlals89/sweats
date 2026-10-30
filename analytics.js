@@ -4,7 +4,7 @@
 
 /* One-tap download: on iPhone/iPad every "Get the app" button ([data-get-app])
    opens the App Store directly instead of scrolling to the download band,
-   which stays the target elsewhere because it also carries the Android APK. */
+   which stays the target elsewhere because it also carries the Google Play beta. */
 (function () {
   var APP_STORE = "https://apps.apple.com/in/app/sweats-social-fitness/id6798016318";
   var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
@@ -49,7 +49,7 @@
     return block.id || block.tagName.toLowerCase();
   };
 
-  /* Outbound clicks — store taps and APK downloads are the conversion that matters here. */
+  /* Outbound clicks — store taps (App Store, Google Play beta) are the conversion that matters here. */
   document.addEventListener("click", function (e) {
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
     if (!a) return;

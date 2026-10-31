@@ -13,6 +13,10 @@
       "destination": "/support.html"
     },
     {
+      "source": "/android",
+      "destination": "/android.html"
+    },
+    {
       "source": "/about",
       "destination": "/about.html"
     },

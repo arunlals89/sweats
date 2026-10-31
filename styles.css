@@ -2422,6 +2422,7 @@ footer {
   max-width: 420px;
 }
 .store-note b { color: var(--text); font-weight: 600; }
+.store-note a { color: var(--text); font-weight: 600; text-decoration: underline; }
 
 /* ---------- homepage tribes (example tribes + run-club CTA) ---------- */
 

@@ -15,7 +15,8 @@
           { "/": "/e/*", "comment": "Reserved short alias for /event" },
           { "/": "/t/*", "comment": "Reserved short alias for /community (tribe)" },
           { "/": "/i/*", "comment": "Reserved short alias for /invite" },
-          { "/": "/p/*", "comment": "Reserved short alias for /post" }
+          { "/": "/p/*", "comment": "Reserved short alias for /post" },
+          { "/": "/go/*", "comment": "Reserved for future link types, routed in-app by OTA" }
         ]
       }
     ]

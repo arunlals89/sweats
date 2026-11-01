@@ -1,0 +1,21 @@
+# sweats-links — see src/index.js. Deploy: `npx wrangler deploy` from this folder.
+name = "sweats-links"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+# No workers.dev preview (no subdomain registered); routes only.
+workers_dev = false
+
+# Only these paths reach the Worker; the rest of sweats.in stays plain GitHub
+# Pages. Routes only fire once the sweats.in DNS records are proxied (orange
+# cloud) in Cloudflare.
+routes = [
+  { pattern = "sweats.in/e/*", zone_name = "sweats.in" },
+  { pattern = "sweats.in/event/*", zone_name = "sweats.in" },
+  { pattern = "sweats.in/t/*", zone_name = "sweats.in" },
+  { pattern = "sweats.in/community/*", zone_name = "sweats.in" },
+]
+
+[vars]
+SUPABASE_URL = "https://hxmawzglinxncruezvpw.supabase.co"
+# The publishable key — public by design, the same one invest.html ships.
+SUPABASE_KEY = "sb_publishable_xsPq_66axdzQ5fPlYbQ90g_Cv5W4psR"

@@ -1528,6 +1528,10 @@ footer {
   text-decoration-color: rgba(23, 209, 88, 0.4);
 }
 
+/* buttons inside article copy keep their own look, not the link style */
+.legal-page a.btn { text-decoration: none; }
+.legal-page a.btn-primary { color: #04140a; }
+
 .legal-page strong {
   color: var(--text);
   font-weight: 600;

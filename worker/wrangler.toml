@@ -13,6 +13,11 @@ routes = [
   { pattern = "sweats.in/event/*", zone_name = "sweats.in" },
   { pattern = "sweats.in/t/*", zone_name = "sweats.in" },
   { pattern = "sweats.in/community/*", zone_name = "sweats.in" },
+  # GitHub Pages 301s www -> apex, and Android App Link verification does not
+  # follow redirects, so www.sweats.in failed (Play Console warning; breaks ALL
+  # hosts on Android <= 11). Serve the apex's association files at www with a
+  # 200 instead. Needs the www DNS record proxied (orange cloud).
+  { pattern = "www.sweats.in/.well-known/*", zone_name = "sweats.in" },
 ]
 
 [vars]

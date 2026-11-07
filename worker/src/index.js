@@ -3,6 +3,9 @@
  *
  * Runs only on sweats.in/e/*, /event/*, /t/* and /community/* (see
  * wrangler.toml); everything else on sweats.in is GitHub Pages, untouched.
+ * Also runs on www.sweats.in/.well-known/*, where passThrough() serves the
+ * apex's assetlinks.json / AASA with a 200 (App Link verification won't
+ * follow GitHub Pages' www -> apex 301).
  * Installed apps never get here: iOS/Android open those paths in Sweats via
  * Universal/App Links. Browsers, desktop, and the crawlers behind WhatsApp,
  * iMessage and Telegram previews do — and the crawlers read og: tags and run

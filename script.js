@@ -228,3 +228,114 @@
     });
   });
 })();
+
+// Hero phone: animated feed. Scrolls post to post, then plays each post's
+// moment (route draws, cheers land, bars fill). Loops seamlessly by cloning
+// the first two posts; pauses when the hero is off screen or the tab is hidden.
+(function () {
+  var feed = document.querySelector(".phone-screen--feed");
+  if (!feed) return;
+  var track = feed.querySelector(".fx-track");
+  var posts = Array.prototype.slice.call(track.querySelectorAll(".fx-post"));
+  if (!posts.length) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    posts.forEach(function (p) { p.classList.add("is-on"); });
+    return;
+  }
+
+  track.appendChild(posts[0].cloneNode(true));
+  track.appendChild(posts[1].cloneNode(true));
+  var clone0 = track.querySelectorAll(".fx-post")[posts.length];
+  var stops = posts.concat([clone0]);
+
+  var DWELL = 2900, MOVE = 1150;
+  var i = 0, firstLap = true, timer = null, tickTimer = null, running = false, current = null;
+  var kmEl = feed.querySelectorAll("[data-live-km]");
+  var timeEl = feed.querySelectorAll("[data-live-time]");
+  var liveSecs = 32 * 60 + 10, liveKm = 12.4;
+
+  function activate(el) {
+    el.classList.add("is-on");
+    var c = el.querySelector(".fx-cheer i");
+    if (c) setTimeout(function () { if (el.classList.contains("is-on")) c.textContent = +c.dataset.n + 1; }, 950);
+    var g = el.querySelector("[data-going]");
+    if (g) setTimeout(function () { if (el.classList.contains("is-on")) g.textContent = +g.dataset.going + 1; }, 1050);
+  }
+
+  function deactivate(el) {
+    if (el === posts[0]) return; // stays "done" so the loop snap back to it is invisible
+    el.classList.remove("is-on");
+    var c = el.querySelector(".fx-cheer i");
+    if (c) c.textContent = c.dataset.n;
+    var g = el.querySelector("[data-going]");
+    if (g) g.textContent = g.dataset.going;
+  }
+
+  function offsetFor(idx) {
+    return idx === 0 && firstLap ? 0 : stops[idx].offsetTop;
+  }
+
+  function show(idx) {
+    var prev = current;
+    current = stops[idx];
+    track.style.transform = "translate3d(0," + -offsetFor(idx) + "px,0)";
+    setTimeout(function () { activate(current); }, idx === 0 && firstLap ? 500 : MOVE - 250);
+    if (prev && prev !== current) setTimeout(function () { deactivate(prev); }, MOVE + 50);
+  }
+
+  function step() {
+    if (!running) return;
+    if (current === clone0) {
+      // snap back to the real first post (identical frame), then carry on
+      firstLap = false;
+      track.classList.add("is-snap");
+      track.style.transform = "translate3d(0," + -posts[0].offsetTop + "px,0)";
+      void track.offsetHeight;
+      track.classList.remove("is-snap");
+      deactivate(clone0);
+      current = posts[0];
+      i = 0;
+    }
+    i += 1;
+    show(i);
+    timer = setTimeout(step, MOVE + DWELL);
+  }
+
+  function tick() {
+    if (!running) return;
+    liveSecs += 1;
+    liveKm += 0.0074;
+    var t = Math.floor(liveSecs / 60) + ":" + ("0" + (liveSecs % 60)).slice(-2);
+    timeEl.forEach(function (e) { e.textContent = t; });
+    kmEl.forEach(function (e) { e.textContent = liveKm.toFixed(2); });
+    tickTimer = setTimeout(tick, 1000);
+  }
+
+  function start() {
+    if (running) return;
+    running = true;
+    if (!current) { show(0); timer = setTimeout(step, DWELL + 600); }
+    else timer = setTimeout(step, 1200);
+    tickTimer = setTimeout(tick, 1000);
+  }
+
+  function stop() {
+    running = false;
+    clearTimeout(timer);
+    clearTimeout(tickTimer);
+  }
+
+  var visible = true;
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      visible && !document.hidden ? start() : stop();
+    }).observe(feed);
+  } else {
+    start();
+  }
+  document.addEventListener("visibilitychange", function () {
+    document.hidden ? stop() : visible && start();
+  });
+})();

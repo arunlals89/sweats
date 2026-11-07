@@ -173,24 +173,20 @@
   });
 
   // ---- sticky download bar (phones) ----
-  // Appears once the hero's own CTA has scrolled away; steps aside while the
+  // The phone layout's only "Get the app" button (the header one is hidden
+  // there), so it shows from the first screen. Steps aside while the
   // download band or the footer is on screen so it never doubles up.
   let stickyCta = document.querySelector(".sticky-cta");
-  let hero = document.querySelector(".hero");
-  if (stickyCta && hero && "IntersectionObserver" in window) {
-    let pastHero = false;
+  if (stickyCta && "IntersectionObserver" in window) {
     let blockers = 0;
     let stickyLink = stickyCta.querySelector("a");
     let render = function () {
-      let show = pastHero && blockers === 0;
+      let show = blockers === 0;
       stickyCta.classList.toggle("is-shown", show);
       stickyCta.setAttribute("aria-hidden", show ? "false" : "true");
       if (stickyLink) stickyLink.tabIndex = show ? 0 : -1;
     };
-    new IntersectionObserver(function (entries) {
-      pastHero = !entries[0].isIntersecting;
-      render();
-    }).observe(hero);
+    render();
     let seen = new Set();
     let blockIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {

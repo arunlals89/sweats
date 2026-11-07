@@ -3392,3 +3392,72 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .td-cover-route, .td-goal-bar span { transition: none; }
 }
+
+/* ==========================================================================
+   Phone declutter (2026-11-07): one CTA (the sticky bar), no decoration
+   behind text, shorter stacks. Desktop is untouched.
+   ========================================================================== */
+
+/* Feature post-cards: the old ≤480px icon grid fought the post header and
+   squeezed "@sweats", the title and the link into one column. */
+@media (max-width: 480px) {
+  .feature-card.post-card,
+  a.feature-card.post-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .post-card h3 { margin-bottom: 6px; }
+  .post-card p { margin-top: 0; }
+  .post-card .card-more { padding-top: 0; white-space: nowrap; }
+  .post-head { margin-bottom: 14px; }
+}
+
+@media (max-width: 720px) {
+  /* Header: logo + menu only; the sticky bar carries "Get the app". */
+  body:has(.sticky-cta) .nav-cta { display: none; }
+  .nav-toggle { border-color: transparent; margin-right: -8px; }
+
+  /* Hero */
+  .hero { padding-top: 104px; }
+  .hero .deco-icons,
+  .hero .float-chip { display: none; }
+  .hero h1 { margin: 16px 0 16px; }
+  .hero p.lead { margin-bottom: 0; }
+  .hero-actions { display: none; }
+  .trust-strip { gap: 6px 16px; margin-top: 20px; }
+  .trust-item {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 13px;
+    gap: 6px;
+  }
+  .trust-item:nth-child(3) { display: none; }
+  .hero-grid { gap: 40px; }
+
+  /* Tribes: page card shows next ride + this week; list shows three. */
+  .td-tabs { gap: 6px; }
+  .td-tabs span { height: 28px; padding: 0 11px; font-size: 12.5px; }
+  .td-goal,
+  .td-post,
+  .td-near .td-row:nth-of-type(n+4) { display: none; }
+  .club-steps { display: none; }
+  .club-cta { padding: 24px 20px; gap: 0; }
+  .club-cta-actions { flex-direction: column; align-items: stretch; gap: 6px; }
+  .club-cta-actions .btn { flex: 0 0 auto; }
+  .club-cta-actions .btn-ghost {
+    border-color: transparent;
+    background: none;
+    height: auto;
+    padding: 10px 0 2px;
+    color: var(--brand);
+  }
+
+  /* Bullet lists: three points is plenty on a phone. */
+  .pill-list li:nth-child(n+4) { display: none; }
+
+  /* Footer: brand on top, link columns side by side. */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .footer-brand { grid-column: 1 / -1; }
+}

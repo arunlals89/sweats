@@ -943,6 +943,118 @@ a.feature-card:focus-visible .card-more span {
   transform: translateX(4px);
 }
 
+/* ---------- feature cards as feed posts ---------- */
+
+.post-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.post-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  background: #000;
+}
+
+.post-who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.post-who b {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.post-who > span {
+  font-size: 12.5px;
+  color: var(--text-faint);
+}
+
+.post-verified { color: var(--brand); flex-shrink: 0; }
+
+.post-card .icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 0 0 auto;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.post-card .icon svg { width: 16px; height: 16px; }
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.post-act {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--text);
+}
+
+.post-act svg { width: 21px; height: 21px; }
+
+.post-actions .card-more {
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+
+.post-like {
+  transition: color 0.25s, fill 0.25s;
+}
+
+a.post-card:hover .post-like,
+a.post-card:focus-visible .post-like {
+  color: var(--danger);
+  fill: var(--danger);
+  animation: likePop 0.45s var(--ease);
+}
+
+@keyframes likePop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/* hero notification chips */
+.chip-av {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #04140a;
+  background: var(--mono, var(--brand));
+}
+
+.float-chip { max-width: 92%; font-weight: 500; }
+.float-chip b { font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  a.post-card:hover .post-like,
+  a.post-card:focus-visible .post-like { animation: none; }
+}
+
 /* ---------- how it works ---------- */
 
 .step {

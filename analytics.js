@@ -2,16 +2,19 @@
    Measurement ID comes from Google Analytics → Admin → Data streams.
    Left as a G-XXXX placeholder, nothing loads and no requests are made. */
 
-/* One-tap download: on iPhone/iPad every "Get the app" button ([data-get-app])
-   opens the App Store directly instead of scrolling to the download band,
-   which stays the target elsewhere because it also carries the Google Play beta. */
+/* One-tap download: every "Get the app" button ([data-get-app]) opens the
+   App Store on iPhone/iPad and Google Play on Android directly, instead of
+   scrolling to the download band, which stays the target on desktop. */
 (function () {
   var APP_STORE = "https://apps.apple.com/in/app/sweats-social-fitness/id6798016318";
+  var PLAY_STORE = "https://play.google.com/store/apps/details?id=in.sweats.sweats";
   var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  if (!isIOS) return;
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  if (!isIOS && !isAndroid) return;
+  var store = isIOS ? APP_STORE : PLAY_STORE;
   document.querySelectorAll("[data-get-app]").forEach(function (a) {
-    a.href = APP_STORE;
+    a.href = store;
     a.target = "_blank";
     a.rel = "noopener";
   });
@@ -49,7 +52,7 @@
     return block.id || block.tagName.toLowerCase();
   };
 
-  /* Outbound clicks — store taps (App Store, Google Play beta) are the conversion that matters here. */
+  /* Outbound clicks — store taps (App Store, Google Play) are the conversion that matters here. */
   document.addEventListener("click", function (e) {
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
     if (!a) return;
@@ -69,7 +72,7 @@
       return;
     }
 
-    /* "Get the app" taps that scroll to the download band (desktop, Android):
+    /* "Get the app" taps that scroll to the download band (desktop):
        the first step of the funnel, before a store badge is chosen. */
     if (a.hasAttribute("data-get-app")) {
       gtag("event", "get_app_click", { cta_location: ctaLocation(a) });
